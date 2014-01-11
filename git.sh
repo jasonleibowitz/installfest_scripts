@@ -1,3 +1,8 @@
+# This script creates a gitconfig file and copies over additional git settings
+
+# clear terminal screen
+clear
+
 # http://stackoverflow.com/questions/17957196/using-variables-in-bash-script-to-set-ini-file-values-while-executing
 # sed "/^number=/s/=.*/=5/" baseinput.ini > input.ini
 

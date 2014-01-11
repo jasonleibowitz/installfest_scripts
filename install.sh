@@ -1,3 +1,7 @@
+# InstallFest
+# This script can be run from the terminal by pasting in
+# bash <(curl https://raw.github.com/phlco/installfest_scripts/master/install.sh)
+
 # clear terminal screen
 clear
 
@@ -13,8 +17,8 @@ if [[ ! -d ~/.wdi-installfest ]]; then
   echo '##### Downloading Installfest repo...'
   # autoupdate bootstrap file
   git clone $source_git $source_dir
-  # # hide folder
-  # chflags hidden $source_dir
+  # hide folder
+  chflags hidden $source_dir
 else
   # update repo
   echo '##### Updating repo...'
@@ -36,4 +40,5 @@ source $source_dir/sublime.sh
 
 source ~/.bash_profile
 
-echo "All done"
+echo "All done."
+echo "You may want to run brew doctor to ensure everything is working."

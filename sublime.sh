@@ -1,3 +1,6 @@
+# clear terminal screen
+clear
+
 # Sublime Text 2
 if [ -x /Applications/Sublime\ Text\ 2.app/ ]; then
   echo "Sublime already installed..."
