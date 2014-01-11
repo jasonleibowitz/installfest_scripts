@@ -1,3 +1,4 @@
+# taken a lot from this https://github.com/divio/osx-bootstrap
 # InstallFest
 # This script can be run from the terminal by pasting in
 # bash <(curl https://raw.github.com/phlco/installfest_scripts/master/install.sh)
