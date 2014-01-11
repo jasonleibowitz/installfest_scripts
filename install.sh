@@ -32,6 +32,9 @@ source $source_dir/clean.sh
 # install homebrew and formulae
 source $source_dir/brew.sh
 
+# additional settings and bash_profile
+source $source_dir/settings.sh
+
 # git setup
 source $source_dir/git.sh
 
@@ -40,6 +43,9 @@ source $source_dir/sublime.sh
 
 # additional apps
 source $source_dir/apps.sh
+
+# Ruby setup
+source $source_dir/rbenv.sh
 
 # reload
 source ~/.bash_profile

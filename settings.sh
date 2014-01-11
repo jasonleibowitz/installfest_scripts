@@ -24,3 +24,6 @@ do
   echo 'copying '$setting'...'
   cp dotfiles/$setting ~/.$setting
 done
+
+# reload terminal
+source ~/.bash_profile
