@@ -38,6 +38,10 @@ source $source_dir/git.sh
 # sublime setup
 source $source_dir/sublime.sh
 
+# additional apps
+source $source_dir/apps.sh
+
+# reload
 source ~/.bash_profile
 
 echo "All done."
