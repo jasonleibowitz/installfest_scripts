@@ -21,3 +21,9 @@ else
         cd $source_dir
         git pull origin master
 fi
+
+# Ensure Macports and RVM aren't installed
+source $source_dir/clean.sh
+
+# install homebrew
+source $source_dir/brew.sh
