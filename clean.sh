@@ -29,6 +29,7 @@ fi
 # Uninstall Macports
 
 if hash port 2>/dev/null; then
+  echo "Macports is installed"
   sudo port -fp uninstall installed
   sudo rm -rf \
     /opt/local \
@@ -44,5 +45,3 @@ if hash port 2>/dev/null; then
 else
   echo "Macports is not installed. Moving on..."
 fi
-
-# Next is installing...
