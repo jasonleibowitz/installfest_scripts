@@ -4,7 +4,7 @@
 clear
 
 # Chrome
-if [ -x /Applications/Google Chrome.app/ ]; then
+if [ -x /Applications/Google\ Chrome.app/ ]; then
   echo "Chrome already installed..."
 else
   echo "Installing Chome"
