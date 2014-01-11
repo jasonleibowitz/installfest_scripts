@@ -1,0 +1,13 @@
+{
+  "installed_packages":
+  [
+    "SublimeCodeIntel",
+    "Package Control",
+    "SublimeLinter",
+    "ColorPicker",
+    "Dotfiles Syntax Highlighting",
+    "Gist",
+    "JSHint",
+    "SideBarEnhancements"
+  ]
+}

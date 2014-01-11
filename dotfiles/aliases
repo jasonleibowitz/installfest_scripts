@@ -1,0 +1,38 @@
+#navigation
+alias ll='ls -al'
+alias b='cd ..'
+alias h='history'
+alias dl='cd ~/Downloads'
+alias doc='cd ~/Documents'
+alias dsk='cd ~/Desktop'
+
+# programs
+alias subl='open -a "Sublime Text 2"'
+# and/or
+# ln -s /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
+
+# Hide/show all desktop icons (useful when presenting)
+alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+
+#Hide/show hidden files
+alias showfiles='defaults write com.apple.finder AppleShowAllFiles TRUE; killall Finder'
+alias hidefiles='defaults write com.apple.finder AppleShowAllFiles FALSE; killall Finder'
+
+# reload terminal
+alias reload="clear; source ~/.bash_profile"
+
+# http://goo.gl/ciP8q Kill Rogue Server
+alias killrogue='lsof -i TCP:3000'
+
+# rails
+alias migrate='rake db:migrate; rake db:migrate RAILS_ENV=test; annotate'
+# rspec
+alias install_rspec='rails g rspec:install; mkdir spec/models; mkdir spec/features; mkdir spec/factories'
+
+# git
+# Undo a `git push`
+alias undopush="git push -f origin HEAD^:master"
+
+# Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
+alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm update npm -g; npm update -g; sudo gem update --system; sudo gem update'

@@ -25,5 +25,15 @@ fi
 # Ensure Macports and RVM aren't installed
 source $source_dir/clean.sh
 
-# install homebrew
+# install homebrew and formulae
 source $source_dir/brew.sh
+
+# git setup
+source $source_dir/git.sh
+
+# sublime setup
+source $source_dir/sublime.sh
+
+source ~/.bash_profile
+
+echo "All done"
