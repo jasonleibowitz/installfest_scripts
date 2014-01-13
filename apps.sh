@@ -15,6 +15,13 @@ else
   rm googlechrome.dmg
 fi
 
+# cd ~/Desktop
+
+# curl -O https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg
+# hdiutil attach googlechrome.dmg
+# cd /Volumes/googlechrome.dmg
+# sudo installer -pkg DarwinPorts-1.2.pkg -target "/"
+# hdiutil detach /Volumes/DarwinPorts-1.2/
 
 # Hipchat
 if [ -x /Applications/HipChat.app/ ]; then

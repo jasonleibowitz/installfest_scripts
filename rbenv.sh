@@ -10,4 +10,7 @@ rbenv global 2.1.0
 source ~/.bash_profile
 
 gem update --system
-gem install bundler rails pry --no-document
+gem install bundler rails pry awesome_print --no-document
+
+# add pryrc
+cp dotfiles/pryrc ~/.pryrc

@@ -15,14 +15,14 @@ declare source_git=https://github.com/phlco/installfest_scripts.git
 
 # we need to download the repo for the absolute paths
 if [[ ! -d ~/.wdi-installfest ]]; then
-  echo '##### Downloading Installfest repo...'
+  echo 'Downloading Installfest repo...'
   # autoupdate bootstrap file
   git clone $source_git $source_dir
   # hide folder
   chflags hidden $source_dir
 else
   # update repo
-  echo '##### Updating repo...'
+  echo 'Updating repo...'
   cd $source_dir
   git pull origin master
 fi
@@ -51,5 +51,7 @@ source $source_dir/rbenv.sh
 # reload
 source ~/.bash_profile
 
-echo "All done."
+echo "All done?"
 echo "You may want to run brew doctor to ensure everything is working."
+echo "Next make sure your SSH keys are setup."
+echo "Follow the instructions here: https://help.github.com/articles/generating-ssh-keys"
