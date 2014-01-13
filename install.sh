@@ -35,7 +35,8 @@ else
 fi
 
 # dramatis personae
-declare source_dir=~/.wdi-installfest/scripts
+declare source_dir=~/.wdi-installfest
+declare source_scripts=~/.wdi-installfest/scripts
 declare source_git=https://github.com/phlco/installfest_scripts.git
 
 # we need to download the repo for the absolute paths
@@ -53,28 +54,28 @@ else
 fi
 
 # Ensure Macports and RVM aren't installed
-source $source_dir/clean.sh
+source $source_scripts/clean.sh
 
 # install homebrew and formulae
-source $source_dir/brew.sh
+source $source_scripts/brew.sh
 
 # additional settings and bash_profile
-source $source_dir/settings.sh
+source $source_scripts/settings.sh
 
 # git setup
-source $source_dir/git.sh
+source $source_scripts/git.sh
 
 # sublime setup
-source $source_dir/sublime.sh
+source $source_scripts/sublime.sh
 
 # additional apps
-source $source_dir/apps.sh
+source $source_scripts/apps.sh
 
 # Ruby setup
-source $source_dir/rbenv.sh
+source $source_scripts/rbenv.sh
 
 # Gem setup
-source $source_dir/gems.sh
+source $source_scripts/gems.sh
 
 # reload
 source ~/.bash_profile
