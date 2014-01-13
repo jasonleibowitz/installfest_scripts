@@ -77,6 +77,9 @@ source $source_scripts/rbenv.sh
 # Gem setup
 source $source_scripts/gems.sh
 
+# Install Postgres
+source $source_scripts/postgres.sh
+
 # reload
 source ~/.bash_profile
 

@@ -3,6 +3,9 @@
 # clear terminal screen
 clear
 
+# Install git
+brew install git
+
 echo "Please register for an account on github.com if you haven't already done so."
 
 echo "Github Username:"

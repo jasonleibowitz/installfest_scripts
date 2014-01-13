@@ -10,13 +10,8 @@ else
     brew doctor
 fi
 
-# install helpfull formulas
+# install additional helpful formulas
 export formulas='
-  git
-  rbenv
-  ruby-build
-  rbenv-gem-rehash
-  postgres
   hub
   imagemagick
   graphviz

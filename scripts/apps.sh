@@ -55,3 +55,14 @@ else
   mv "Spectacle.app" /Applications
   rm Spectacle+0.8.4.zip
 fi
+
+# Solarized Terminal colors
+echo "Solarized Colors for Terminal"
+curl -L -o "solarized.zip" https://github.com/tomislav/osx-terminal.app-colors-solarized/archive/master.zip
+unzip "solarized.zip"
+open "osx-terminal.app-colors-solarized-master/Solarized Light.terminal"
+open "osx-terminal.app-colors-solarized-master/Solarized Dark.terminal"
+rm solarized.zip
+defaults write com.apple.terminal "Default Window Settings" -string "Solarized Dark"
+defaults write com.apple.terminal "Startup Window Settings" -string "Solarized Dark"
+rm -rf "osx-terminal.app-colors-solarized-master"
