@@ -24,6 +24,7 @@
 # --------------------
 # System Settings
 # --------------------
+#  0. rbenv
 #  1. Path List
 #  2. File Navigation
 #  3. History
@@ -36,22 +37,21 @@
 #  7. Sublime
 #  8. Git
 #  9. Rails
-# 10. rbenv
 # --------------------
 # Other Settings
 # --------------------
-# 11. Shortcuts
-# 12. Source Files
-# 13. Reserved
-
+# 10. Shortcuts
+# 11. Source Files
+# 12. Reserved
 
 # SYSTEM SETTINGS
 ##########################################################################
 
 # =================
 # rbenv
+# our Ruby environment and version manager
 # =================
-# start rbenv (our Ruby environment and version manager) on open
+# start rbenv on open
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # ==================
@@ -79,7 +79,7 @@ alias dsk='cd ~/Desktop'
 export CLICOLOR=1
 # http://geoff.greer.fm/lscolors/
 # Describes what color to use for which attribute (files, folders etc.)
-# export LSCOLORS=faexcxdxbxegedabagacad # PJ: turned off
+export LSCOLORS=exfxcxdxbxexexabagacad
 # go back one directory
 alias b='cd ..'
 # If we make a change to our bash profile we need to reload it
@@ -92,8 +92,8 @@ export LANG="en_US"
 
 # =================
 # History
+# lists your previously entered commands
 # =================
-# History lists your previously entered commands
 alias h='history'
 # http://jorge.fbarr.net/2011/03/24/making-your-bash-history-more-efficient/
 # Larger bash history (allow 32³ entries; default is 500)
@@ -213,6 +213,7 @@ function server() {
   # And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
   python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port"
 }
+
 # List any open internet sockets on port 3000. Useful if a rogue server is running
 # http://www.akadia.com/services/lsof_intro.html
 alias rogue='lsof -i TCP:3000'
@@ -223,8 +224,8 @@ alias rogue='lsof -i TCP:3000'
 # ================
 # Application Aliases
 # ================
-alias subl='open -a "Sublime Text"'     # for Sublime Text 3
 # alias subl='open -a "Sublime Text 2"' # for Sublime Text 2
+alias subl='open -a "Sublime Text"'     # for Sublime Text 3
 alias mou="open /Applications/Mou.app"
 alias hipchat="open /Applications/HipChat.app"
 
@@ -312,14 +313,16 @@ alias migrate='rake db:migrate; rake db:migrate RAILS_ENV=test; annotate'
 # Students can add a shortcut to quickly access their GA folder
 # example: alias wdi="cd ~/Documents/GA/WDI4"
 
-alias wdi="cd ~/dev/wdi/WDI_NYC_12_Students"
+export wdi_class="WDI_NYC_12_Students"
+
+alias wdi="cd ~/dev/wdi/$wdi_class"
 cdhwfunc() {
   # takes three args: the week, the day and an optional third for the user
   if [ $1 -lt 10 ]
   then
-    cd ~/dev/wdi/WDI_NYC_12_Students/w0$1/d0$2/${3:-Instructor}
+    cd ~/dev/wdi/$wdi_class/w0$1/d0$2/${3:-Instructor}
   else
-    cd ~/dev/wdi/WDI_NYC_12_Students/w$1/d0$2/${3:-Instructor}
+    cd ~/dev/wdi/$wdi_class/w$1/d0$2/${3:-Instructor}
   fi
 }
 alias cdhw=cdhwfunc
@@ -329,13 +332,6 @@ alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup
 # =================
 # Source Files
 # =================
-# Load ~/.extra, ~/.bash_prompt, ~/.exports, ~/.aliases and ~/.functions
-# ~/.extra can be used for settings you don’t want to commit
-# for file in ~/.{extra,bash_prompt,exports,aliases,functions}; do
-#   [ -r "$file" ] && source "$file"
-# done
-# unset file
-# .bash_settings and .bash_prompt should be added to .gitignore_global
 # An extra file where you can create other settings, such as your
 # application usernames or API keys...
 if [ -f ~/.bash_settings ]; then

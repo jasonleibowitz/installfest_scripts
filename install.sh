@@ -11,7 +11,28 @@
 clear
 
 # Start install fest
-echo 'welcome to installfest'
+echo 'Welcome to Installfest'
+
+# Determine OS version
+declare osvers=$(sw_vers -productVersion)
+declare latest_os="10.9.1"
+echo "You're running OSX $osvers"
+if [[ "$osvers" < "$latest_os" ]]; then
+  echo "Please think about upgrading to the latest OS"
+fi
+
+# Let's make sure we're updated
+echo "Checking for software updates..."
+sudo softwareupdate -i -a
+
+# The one prereq is Xcode Command Line Tools
+# Check for those
+if [ -x /Applications/Xcode.app/ ]; then
+  echo "Xcode is installed"
+else
+  echo "Please install Xcode then rerun this script."
+  exit
+fi
 
 # dramatis personae
 declare source_dir=~/.wdi-installfest/scripts
