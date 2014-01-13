@@ -8,6 +8,7 @@
     "Dotfiles Syntax Highlighting",
     "Gist",
     "JSHint",
-    "SideBarEnhancements"
+    "SideBarEnhancements",
+    "EditorConfig"
   ]
 }

@@ -1,3 +1,7 @@
+# |_ _|_ _  __| |_ __ _| | | __|__ __| |_
+#  | || ' \(_-<  _/ _` | | | _/ -_|_-<  _|
+# |___|_||_/__/\__\__,_|_|_|_|\___/__/\__|
+
 # taken a lot from this https://github.com/divio/osx-bootstrap
 # InstallFest
 # This script can be run from the terminal by pasting in
@@ -6,15 +10,15 @@
 # clear terminal screen
 clear
 
-# start install fest
+# Start install fest
 echo 'welcome to installfest'
 
 # dramatis personae
-declare source_dir=~/.wdi-installfest
+declare source_dir=~/.wdi-installfest/scripts
 declare source_git=https://github.com/phlco/installfest_scripts.git
 
 # we need to download the repo for the absolute paths
-if [[ ! -d ~/.wdi-installfest ]]; then
+if [[ ! -d $source_dir ]]; then
   echo 'Downloading Installfest repo...'
   # autoupdate bootstrap file
   git clone $source_git $source_dir
@@ -47,6 +51,9 @@ source $source_dir/apps.sh
 
 # Ruby setup
 source $source_dir/rbenv.sh
+
+# Gem setup
+source $source_dir/gems.sh
 
 # reload
 source ~/.bash_profile

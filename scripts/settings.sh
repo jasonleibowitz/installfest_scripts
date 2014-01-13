@@ -15,7 +15,7 @@ export settings='
 for setting in $settings
 do
   echo 'Installing '$setting'...'
-  cp "$setting" "~/.$setting"
+  cp "dotfiles/$setting" "~/.$setting"
 done
 
 # reload terminal
