@@ -1,0 +1,9 @@
+if defined? IRB
+  begin
+    require 'awesome_print'
+    AwesomePrint.irb!
+  rescue LoadError => e
+    puts "ap gem not found.  Try typing 'gem install awesome_print' to get super-fancy output."
+  end
+end
+IRB.conf[:AUTO_INDENT]=true
