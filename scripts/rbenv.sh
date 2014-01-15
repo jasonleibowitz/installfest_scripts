@@ -2,7 +2,9 @@
 clear
 
 # Download and install
-brew install rbenv ruby-build rbenv-gem-rehash
+brew install rbenv            # our ruby version manager
+brew install ruby-build       # provides an `rbenv install` command
+brew install rbenv-gem-rehash # automatically runs `rbenv rehash` command
 
 # Install Ruby
 rbenv install 2.1.0

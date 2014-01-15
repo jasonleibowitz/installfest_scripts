@@ -14,8 +14,9 @@ fi
 
 brew install figlet       # ASCII ART!!!!
 brew install hub          # additional git commands
-brew install imagemagick  #
-brew install graphviz     #
-brew install phantomjs    #
-brew install qt           #
+brew install imagemagick  # image resizing
+brew install graphviz     # visualization tool for ERDs
+brew install phantomjs    # headless webkit for javascript testing
+brew install qt           # capybara-webkit depends on a WebKit implementation from Qt
+brew install qt4          # qt for mavericks
 

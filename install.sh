@@ -32,6 +32,8 @@ echo "Github Email"
 read github_email
 
 # Determine OS version
+# we may need to download x11?
+# http://xquartz.macosforge.org/landing/
 declare osvers=$(sw_vers -productVersion)
 declare latest_os="10.9.1"
 echo "You're running OSX $osvers"
