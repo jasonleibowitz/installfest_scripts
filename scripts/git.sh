@@ -1,17 +1,7 @@
 # This script creates a gitconfig file and copies over additional git settings
 
-# clear terminal screen
-clear
-
 # Install git
 brew install git
-
-echo "Please register for an account on github.com if you haven't already done so."
-
-echo "Github Username:"
-read github_name
-echo "Github Email"
-read github_email
 
 # http://stackoverflow.com/questions/10565877/how-to-replace-two-things-at-once-with-sed
 # writing name and email to gitconfig

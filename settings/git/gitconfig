@@ -12,6 +12,6 @@
   editor = subl
   excludesfile = ~/.gitignore_global
 [commit]
-  template = $HOME/.gitmessage.txt
+  template = ~/.gitmessage.txt
 [branch]
   autosetuprebase = always

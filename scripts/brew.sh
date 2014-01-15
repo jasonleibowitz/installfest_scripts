@@ -10,16 +10,12 @@ else
     brew doctor
 fi
 
-# install additional helpful formulas
-export formulas='
-  hub
-  imagemagick
-  graphviz
-  phantomjs
-  qt
-'
-for formula in $formulas
-do
-  echo 'Installing '$formula'...'
-  brew install $formula
-done
+# install additional helpful formulae
+
+brew install figlet       # ASCII ART!!!!
+brew install hub          # additional git commands
+brew install imagemagick  #
+brew install graphviz     #
+brew install phantomjs    #
+brew install qt           #
+

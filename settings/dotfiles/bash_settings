@@ -1,0 +1,12 @@
+# -------
+# Github
+# -------
+export GIT_CLIENT_ID=''
+export GIT_CLIENT_SECRET=''
+export GIT_TOKEN=''
+
+# --------
+# Postgres
+# --------
+export PG_USERNAME=''
+export PG_PASSWORD=''

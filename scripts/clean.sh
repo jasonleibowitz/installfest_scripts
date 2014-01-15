@@ -10,10 +10,7 @@ clear
 
 # http://stackoverflow.com/questions/3976362/bash-scripts-requiring-sudo-password
 # Run the Script with sudo
-sudo -v
-
-# Keep-alive: update existing `sudo` time stamp until script has finished
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+echo $user_pass | sudo -vS
 
 # http://stackoverflow.com/questions/592620/how-to-check-if-a-program-exists-from-a-bash-script
 # Uninstall if the command exists
@@ -24,6 +21,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 if hash rvm 2>/dev/null; then
   rvm implode
   rm -rf ~/.rvm
+  echo "RVM has been destroyed. You are welcome, $(user_name)."
 else
   echo "RVM is not installed. Moving on..."
 fi
@@ -32,7 +30,7 @@ fi
 # Uninstall Macports
 
 if hash port 2>/dev/null; then
-  echo "Macports is installed"
+  echo "$(user_name), you installed Macports?"
   sudo port -fp uninstall installed
   sudo rm -rf \
     /opt/local \
@@ -45,6 +43,9 @@ if hash port 2>/dev/null; then
     /Library/Tcl/darwinports1.0 \
     /Library/Tcl/macports1.0 \
     ~/.macports
+    # carthago delenda est
+    sudo find / | grep macports | sudo xargs rm
+    echo "Macports has been removed."
 else
   echo "Macports is not installed. Moving on..."
 fi
