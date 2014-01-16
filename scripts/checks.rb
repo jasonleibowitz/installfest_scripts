@@ -1,15 +1,17 @@
-##Checkpoints to see if you computer is configured properly.
+# Checkpoints to see if you computer is configured properly.
+
 require 'minitest/autorun'
 require 'minitest/reporters'
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 describe "Installfest" do
-  
+
   ROOT = File.expand_path('~')
 
   describe "Brew" do
     # When you type `brew doctor` into your Terminal, you get no warnings.
-    # If you get warnings follow the instructions and repeat until it says `Your system is ready to brew.`
+    # If you get warnings follow the instructions
+    # repeat until it says `Your system is ready to brew.`
     it "says 'Your system is ready to brew.'" do
       brew = `brew doctor`
       brew.must_include("Your system is ready to brew.")
@@ -79,9 +81,11 @@ describe "Installfest" do
   end
 
   # When you have Sublime open and press `CMD+Shift+P` you'll see a drop down menu.
-  # When you type `install` into the menu, you should see the option `Package Control: Install Package`
+  # When you type `install` into the menu
+  # you should see the option `Package Control: Install Package`
 
-  # Your ssh keys are set up (see [here](https://help.github.com/articles/generating-ssh-keys) for instructions)
+  # Your ssh keys are set up
+  # (see [here](https://help.github.com/articles/generating-ssh-keys) for instructions)
 
   # When you type `subl ~/dev/wdi/WDI_NYC_12`, you see our class repository files
 

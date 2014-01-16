@@ -1,5 +1,5 @@
 # clear terminal screen
-clear
+#clear
 
 # Sublime Text 2
 if [ -x /Applications/Sublime\ Text\ 2.app/ ]; then

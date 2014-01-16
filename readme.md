@@ -4,8 +4,13 @@ A work in progress to automate the set up of a student's development machine.
 
 Run this script from the command line
 
+```bash
+curl https://raw.github.com/WDI_NYC_12/installfest_scripts/master/install.sh | bash
 ```
-$ bash <(curl https://raw.github.com/phlco/installfest_scripts/master/install.sh)
+
+The repo is currently hidden, so use the below url with token.
+```
+curl https://raw.github.com/ga-students/WDI_NYC_12_Instructors/super_installfest/installfest/install.sh?token=1198291__eyJzY29wZSI6IlJhd0Jsb2I6Z2Etc3R1ZGVudHMvV0RJX05ZQ18xMl9JbnN0cnVjdG9ycy9zdXBlcl9pbnN0YWxsZmVzdC9pbnN0YWxsZmVzdC9pbnN0YWxsLnNoIiwiZXhwaXJlcyI6MTM5MDQ5NzAzNX0%3D--63f35c53937b27cd9b9d79db9ac357f25075e6f2 | bash
 ```
 
 The script first runs any software updates and then checks for Xcode.

@@ -1,8 +1,5 @@
 # This script checks for and removes previous installs of macports and rvm
 
-# clear terminal screen
-clear
-
 # http://stackoverflow.com/questions/5735666/execute-bash-script-from-url
 # This is meant to be run by pasting the following into Terminal
 # bash <(curl -s https://gist.github.com/phlco/8358292/raw/48f61796b20f879cdfa30250614ac40ec2a76d43/uninstalls.sh)
