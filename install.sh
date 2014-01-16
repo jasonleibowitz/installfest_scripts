@@ -41,9 +41,9 @@ clear
 # Start install fest ###################################################################
 echo "Welcome to Installfest"
 sudo echo "Thanks." # PJ: capture the user's password
+
 echo "Enter your full name:"
 read user_name
-echo "Stop here for a second."
 
 # echo "Enter your local password:"
 # read -s user_pass
@@ -263,4 +263,5 @@ quoth_the_bard \
 # EPILOGUE
 echo "You may want to run brew doctor to ensure everything is working."
 echo "Next make sure your SSH keys are setup."
-echo "Follow the instructions here: https://help.github.com/articles/generating-ssh-keys"
+echo "Follow the instructions here:"
+echo "https://help.github.com/articles/generating-ssh-keys"

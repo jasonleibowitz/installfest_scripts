@@ -1,16 +1,16 @@
-# This script downloads ruby 2.1 and sets it as the global default ruby
+# This script checks for and downloads Ruby 2.1 and sets it as the global default
 
-# Install Ruby
-declare ruby_version="2.1.0"
-declare ruby_check=$(rbenv versions | grep $ruby_version)
-if [[ "$ruby_check" == *$ruby_version* ]]; then
-  echo "$ruby_version is installed"
+declare beloved_ruby_version="2.1.0"
+declare ruby_check=$(rbenv versions | grep $beloved_ruby_version)
+
+if [[ "$ruby_check" == *$beloved_ruby_version* ]]; then
+  echo "$beloved_ruby_version is installed"
 else
-  rbenv install 2.1.0
+  rbenv install $beloved_ruby_version
 fi
 
 # Set global Ruby
-rbenv global 2.1.0
+rbenv global $beloved_ruby_version
 
 # Reload
 source ~/.bash_profile
