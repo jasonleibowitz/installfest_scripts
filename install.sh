@@ -39,19 +39,15 @@ announcing () {
 clear
 
 # Start install fest ###################################################################
+# Keep-alive: update existing `sudo` time stamp until script has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
 echo "Welcome to Installfest"
 sudo echo "Thanks." # PJ: capture the user's password
 
 echo "Enter your full name:"
 read user_name
 
-# echo "Enter your local password:"
-# read -s user_pass
-# # cache sudo so we can reuse it with sudo -S
-# echo $user_pass | sudo -vS
-
-# Keep-alive: update existing `sudo` time stamp until script has finished
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 echo "Please register for an account on github.com if you haven't already done so."
 
