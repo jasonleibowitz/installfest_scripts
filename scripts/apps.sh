@@ -33,11 +33,12 @@ lend_me_your () {
 }
 
 # Friends, Romans, countrymen,
-lend_me_your "HipChat"        "http://downloads.hipchat.com.s3.amazonaws.com/osx/HipChat-2.4.zip"
-lend_me_your "Spectacle"      "https://s3.amazonaws.com/spectacle/downloads/Spectacle+0.8.4.zip"
-lend_me_your "Mou"            "http://mouapp.com/download/Mou.zip"
-lend_me_your "Sublime Text 2" "http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%202.0.2.dmg"
 lend_me_your "Google Chrome"  "https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg"
+lend_me_your "HipChat"        "http://downloads.hipchat.com.s3.amazonaws.com/osx/HipChat-2.4.zip"
+lend_me_your "Mou"            "http://mouapp.com/download/Mou.zip"
+lend_me_your "Spectacle"      "https://s3.amazonaws.com/spectacle/downloads/Spectacle+0.8.4.zip"
+lend_me_your "Sublime Text 2" "http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%202.0.2.dmg"
+# lend_me_your "Sublime Text"   "http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%20Build%203059.dmg"
 
 # Solarized Terminal colors
 echo "Installing 'Solarized Colors' for Terminal..."

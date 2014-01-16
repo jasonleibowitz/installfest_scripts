@@ -5,8 +5,15 @@
 # |_|_| |_|___/\__\__,_|_|_|_|  \___||___/\__|
 #
 
-# taken a lot from this https://github.com/divio/osx-bootstrap
 # InstallFest Script by Phillip Lamplugh, General Assembly Instructor (2014)
+
+# Resources
+# https://github.com/divio/osx-bootstrap
+# https://github.com/paulirish/dotfiles
+# https://github.com/mathiasbynens/dotfiles/
+# References
+# http://www.sudo.ws/
+# http://www.gnu.org/software/bash/manual/bashref.html
 
 # ABRB
 quoth_the_bard () {
