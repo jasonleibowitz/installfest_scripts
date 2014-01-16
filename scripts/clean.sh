@@ -7,7 +7,7 @@
 
 # http://stackoverflow.com/questions/3976362/bash-scripts-requiring-sudo-password
 # Run the Script with sudo
-echo $user_pass | sudo -vS
+# echo $user_pass | sudo -vS
 
 # http://stackoverflow.com/questions/592620/how-to-check-if-a-program-exists-from-a-bash-script
 # Uninstall if the command exists

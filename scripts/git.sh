@@ -11,3 +11,11 @@ sed -e s/github_name/"$github_name"/ -e \s/github_email/"$github_email"/ $source
 # copying gitignore global and commit template
 cp ../settings/git/gitignore_global ~/.gitignore_global
 cp ../settings/git/gitmessage.txt ~/.gitmessage.txt
+cp ../settings/git/gitconfig ~/.gitconfig
+
+# # Add user's github info to gitconfig
+# # PL: more readable?
+# echo -e "[user]
+#   name = $github_name
+#   email = $github_email
+# $(cat ~/.gitconfig)" > ~/.gitconfig

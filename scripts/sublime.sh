@@ -1,18 +1,3 @@
-# clear terminal screen
-#clear
-
-# Sublime Text 2
-if [ -x /Applications/Sublime\ Text\ 2.app/ ]; then
-  echo "Sublime already installed..."
-else
-  echo "Installing Sublime Text 2"
-  curl -L -o "Sublime Text 2.0.2.dmg" "http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%202.0.2.dmg"
-  hdiutil mount "Sublime Text 2.0.2.dmg"
-  cp -R "/Volumes/Sublime Text 2/Sublime Text 2.app" /Applications
-  hdiutil unmount "/Volumes/Sublime Text 2"
-  rm "Sublime Text 2.0.2.dmg"
-fi
-
 # Download and write sublime system settings
 # http://unix.stackexchange.com/questions/19608/how-can-i-specify-that-curl-via-command-line-overwrites-a-file-if-it-already-e
 
