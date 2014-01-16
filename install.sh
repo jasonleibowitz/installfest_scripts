@@ -47,14 +47,12 @@ sudo echo "Thanks." # PJ: capture the user's password
 
 echo "Enter your full name:"
 read user_name
-
-
 echo "Please register for an account on github.com if you haven't already done so."
-
 echo "Github Username:"
 read github_name
 echo "Github Email:"
 read github_email
+
 #######################################################################################
 
 # Determine OS version ################################################################

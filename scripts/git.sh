@@ -6,8 +6,7 @@
 # sed "/^number=/s/=.*/=5/" baseinput.ini > input.ini
 
 # Add user's github info to gitconfig
-sed -e s/github_name/"$github_name"/ -e \s/github_email/"$github_email"/ \
-$source_dir/settings/git/gitconfig > ~/.gitconfig
+sed -e s/github_name/"$github_name"/ -e \s/github_email/"$github_email"/ $source_dir/settings/git/gitconfig > ~/.gitconfig
 
 # copying gitignore global and commit template
 cp ../settings/git/gitignore_global ~/.gitignore_global

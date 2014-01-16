@@ -5,7 +5,7 @@ A work in progress to automate the set up of a student's development machine.
 Run this script from the command line
 
 ```bash
-curl https://raw.github.com/phlco/installfest_scripts/master/install.sh | bash
+bash <(curl -s https://raw.github.com/phlco/installfest_scripts/master/install.sh)
 ```
 
 The repo is currently hidden, so use the below url with token.
