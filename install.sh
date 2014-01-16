@@ -40,10 +40,10 @@ clear
 
 # Start install fest ###################################################################
 echo "Welcome to Installfest"
+sudo echo "Thanks." # PJ: capture the user's password
 echo "Enter your full name:"
 read user_name
 echo "Stop here for a second."
-sudo echo "Thanks." # PJ: capture the user's password
 
 # echo "Enter your local password:"
 # read -s user_pass
