@@ -70,6 +70,7 @@ echo "You're running OSX $osvers"
 if [[ "$osvers" < "$latest_os" ]]; then
   echo "Please think about upgrading to the latest OS"
 fi
+
 #######################################################################################
 
 # Let's make sure we're updated #######################################################
@@ -165,6 +166,16 @@ And no man see me more." \
 source $source_scripts/settings.sh # PL: someday maybe these are kept in a hidden folder?
 #######################################################################################
 
+# Ruby setup ##########################################################################
+announcing "act 3 - scene 1"
+
+quoth_the_bard \
+"Once more the ruby-colour'd portal open'd," \
+"--Venus and Adonis (1593)"
+
+source $source_scripts/rbenv.sh
+#######################################################################################
+
 # git setup ###########################################################################
 announcing "act 2 - scene 1"
 
@@ -205,15 +216,6 @@ With several applications..." \
 source $source_scripts/apps.sh
 #######################################################################################
 
-# Ruby setup ##########################################################################
-announcing "act 3 - scene 1"
-
-quoth_the_bard \
-"Once more the ruby-colour'd portal open'd," \
-"--Venus and Adonis (1593)"
-
-source $source_scripts/rbenv.sh
-#######################################################################################
 
 # Gem setup ###########################################################################
 announcing "act 3 - scene 2"

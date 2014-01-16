@@ -22,3 +22,7 @@ brew install graphviz     # visualization tool for ERDs
 brew install phantomjs    # headless webkit for javascript testing
 brew install qt           # capybara-webkit depends on a WebKit implementation from Qt
 brew install qt4          # qt for mavericks
+# Ruby
+brew install rbenv            # our ruby version manager
+brew install ruby-build       # provides an `rbenv install` command
+brew install rbenv-gem-rehash # automatically runs `rbenv rehash` command
