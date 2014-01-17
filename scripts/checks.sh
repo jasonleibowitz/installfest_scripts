@@ -5,30 +5,77 @@
 # Could also be rewritten in bash.
 # Students should be able to enter each command and receive the correct output
 
-# When you type `brew doctor` into your Terminal, you get no warnings.
-# If you get warnings follow the instructions
-# repeat until it says `Your system is ready to brew.`
+# Instruments of Darkness
+what_news_of () {
+  app_name=$1
+  echo "What news of $app_name?"
+  if [ ! -x "/Applications/$app_name.app" ]; then
+    echo "Alack! No news of $app_name";
+    return 1
+  else
+    echo "$app_name is well"
+  fi
+}
 
-# When you type `ruby -v` into your terminal, you get `ruby  2.1.0`
+dost_thou_have () {
+  filename=$1
+  if [ -e "$filename" ]; then
+    echo "Aye. That which thou seeks is thine"
+  else
+    echo "Nay. Thou searchest in vain.";
+  fi
+}
 
-# When you type `pry` into your terminal, it changes the prompt to `pry(main)`
-# (Type `exit` to return to return to the bash prompt)
-gem list pry -i # should return true
+is_not_this () {
+  cmd=$($1)
+  pass=$2
+  if [[ $cmd != *"$pass"* ]]; then
+    echo "Nay";
+  else
+    echo "Aye";
+  fi
+}
 
-# When you type `subl` into your terminal, it opens up Sublime Text
+echo "Running some checks on how our Install went"
+
+is_not_this "brew doctor"     "ready to brew."
+is_not_this "ruby -v"         "2.1.0"
+is_not_this "gem list pry -i" "true"
+
+# # When you type `subl` into your terminal, it opens up Sublime Text
+if [ ! -L /usr/local/bin/subl ]; then
+  echo "sublime symlink problem";
+fi
 
 # Your root directory contains the following:
 # `.gitignore_global`, `.gitconfig`, `.bash_profile`
 # You should be able to open each one with `subl ~/FILENAME`
 # ie `subl ~/.gitignore_global`
+dost_thou_have ~/.bash_profile
+dost_thou_have ~/.gitignore_global
+dost_thou_have ~/.gitconfig
+dost_thou_have ~/Library/Application\ Support/Sublime\ Text\ 2/Installed\ Packages
+dost_thou_have ~/dev/wdi/WDI_NYC_12
 
-# When you have Sublime open and press `CMD+Shift+P` you'll see a drop down menu.
-# When you type `install` into the menu
-# you should see the option `Package Control: Install Package`
+# Applications
+what_news_of "Spectacle"
+what_news_of "Sublime Text 2"
+what_news_of "HipChat"
+what_news_of "Google Chrome"
+what_news_of "Mou"
 
 # Your ssh keys are set up (see [here](https://help.github.com/articles/generating-ssh-keys) for instructions)
 
-# When you type `subl ~/dev/wdi/WDI_NYC_12`
-# you see our class repository files
+# Sublime Checks
+export sublime="${HOME}/Library/Application Support/Sublime Text 2/Packages/User"
+export subl_prefs=$(cat "$sublime/Preferences.sublime-settings")
+export tab_size="\"tab_size\": 2"
+export tab_to_space="\"translate_tabs_to_spaces\": true"
 
-# You have `Spectacle` installed on your computer to manage your windows
+if [[ "$subl_prefs" != *$tab_size* ]]; then
+  fie "Tab size must be set to 2!"
+fi
+
+if [[ "$subl_prefs" != *$tab_to_space* ]]; then
+  fie "Translate tabs to spaces must be true!"
+fi

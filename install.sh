@@ -27,7 +27,7 @@ quoth_the_bard () {
   echo "$PURPLE$attribution$RESET"
 }
 
-O_fie () {
+fie () {
   # upcase the message
   message=$(echo $1 | tr 'a-z' 'A-Z')
   RED=$(tput setaf 1)
