@@ -93,7 +93,8 @@ quoth_the_bard "The play's the thing..."
 
 # Dramatis personae ###################################################################
 declare source_dir=~/.wdi-installfest
-declare source_scripts=~/.wdi-installfest/scripts
+declare source_scripts=$source_dir/scripts
+declare source_files=$source_dir/settings
 declare source_git=https://github.com/phlco/installfest_scripts.git
 
 # The curtain rises ###################################################################
