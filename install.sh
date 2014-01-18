@@ -14,6 +14,8 @@
 # References
 # http://www.sudo.ws/
 # http://www.gnu.org/software/bash/manual/bashref.html
+# http://www.shellcheck.net
+# http://explainshell.com/
 
 # ABRB
 quoth_the_bard () {
@@ -201,6 +203,7 @@ with this special observance that you o'erstep not the modesty of nature." \
 "--Hamlet (III.ii)"
 
 source $source_scripts/sublime.sh
+source $source_scripts/terminal.sh # solarize terminal colors
 #######################################################################################
 
 
