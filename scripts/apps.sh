@@ -83,8 +83,15 @@ lend_me_your "Google Chrome"  "https://dl.google.com/chrome/mac/stable/GGRO/goog
 lend_me_your "HipChat"        "http://downloads.hipchat.com.s3.amazonaws.com/osx/HipChat-2.4.zip"
 lend_me_your "Mou"            "http://mouapp.com/download/Mou.zip"
 lend_me_your "Spectacle"      "https://s3.amazonaws.com/spectacle/downloads/Spectacle+0.8.4.zip"
-lend_me_your "Sublime Text 2" "http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%202.0.2.dmg"
-lend_me_your "Sublime Text"   "http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%20Build%203059.dmg"
+
+# Prompt for Sublime 2 or 3
+read -p "Sublime 2 or 3?" subl_vers
+if [ $subl_vers == "2" ]; then
+  lend_me_your "Sublime Text 2" "http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%202.0.2.dmg"
+else
+  lend_me_your "Sublime Text"   "http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%20Build%203059.dmg"
+fi
+
 lend_me_your "XQuartz"        "http://xquartz.macosforge.org/downloads/SL/XQuartz-2.7.5.dmg"
 
 ## - FIN - ##

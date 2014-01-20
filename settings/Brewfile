@@ -1,0 +1,50 @@
+# Brewfile similar to bundle.
+# this will process the Brewfile in the current directory
+# `$ brew bundle`
+# or you can point to a specific one
+# `$ brew bundle ~/.wdi-installfest/Brewfile`
+
+# Make sure we’re using the latest Homebrew
+update
+
+# Upgrade any already-installed formulae
+upgrade
+
+
+install git #............... Version Control
+install git-flow #.......... Git extensions to provide high-level repository operations
+install autoconf #.......... Autoconf is an extensible package of M4 macros that produce shell scripts to automatically configure software source code packages.
+install automake #.......... Automake is a tool for automatically generating Makefile.in
+install heroku-toolbelt #... Heroku command-line tooling for working with the Heroku platform
+install libtool #........... generic library support script
+install libyaml #........... a YAML 1.1 parser and emitter
+install neon #.............. neon is an HTTP and WebDAV client library
+install node #.............. Event-driven I/O server-side JavaScript environment based on V8
+install openssl #........... A toolkit implementing SSL v2/v3 and TLS protocols with full-strength cryptography world-wide.
+install phantomjs #......... PhantomJS is a headless WebKit scriptable with a JavaScript API.
+install pkg-config #........ pkg-config is a helper tool used when compiling applications and libraries.
+install readline #.......... provides a set of functions for use by applications that allow users to edit command lines as they are typed in
+install serf #.............. a high performance C-based HTTP client library
+install sqlite #............ a self-contained, serverless, zero-configuration, transactional SQL database engine.
+install ssh-copy-id #....... a script that uses ssh to log into a remote machine
+install figlet #............ ASCII ART!!!!
+install postgres #.......... open source object-relational database management system
+install hub #............... additional git commands
+install imagemagick #....... image resizing
+install graphviz #.......... visualization tool for ERDs
+install qt #................ WebKit implementation of Qt
+install qt4 #............... qt for mavericks
+install rbenv #............. our ruby version manager
+install ruby-build #........ provides an `rbenv install` command
+install rbenv-gem-rehash #.. automatically runs `rbenv rehash` command
+
+#  Tap a new formula repository from GitHub, or list existing taps.
+tap homebrew/versions
+# Ensures all tapped formula are symlinked into Library/Formula
+# and prunes dead formula from Library/Formula.
+# tap --repair
+
+# Remove outdated versions from the cellar
+cleanup
+
+# fin

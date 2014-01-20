@@ -54,14 +54,12 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 echo "Welcome to Installfest"
 sudo echo "Thanks." # PJ: capture the user's password
 
-echo "Enter your full name:"
-read user_name
-echo "Please register for an account on github.com if you haven't already done so."
-echo "Github Username:"
-read github_name
-echo "Github Email:"
-read github_email
 
+echo "Please register for an account on github.com if you haven't already done so."
+
+read -p "Enter your full name: "  user_name
+read -p "Github Username: "       github_name
+read -p "Github Email: "          github_email
 #######################################################################################
 
 # Determine OS version ################################################################
@@ -69,6 +67,7 @@ read github_email
 # http://xquartz.macosforge.org/landing/
 declare osvers=$(sw_vers -productVersion)
 declare latest_os="10.9.1"
+
 echo "You're running OSX $osvers"
 if [[ "$osvers" < "$latest_os" ]]; then
   echo "Please think about upgrading to the latest OS"
