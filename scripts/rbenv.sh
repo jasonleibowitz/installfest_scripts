@@ -3,6 +3,9 @@
 declare beloved_ruby_version="2.1.0"
 declare ruby_check=$(rbenv versions | grep $beloved_ruby_version)
 
+# # copy over default gemset
+# cp $src_dir/settings/ruby/default-gems ~/.rbenv/default-gems
+
 if [[ "$ruby_check" == *$beloved_ruby_version* ]]; then
   echo "$beloved_ruby_version is installed"
 else
@@ -14,3 +17,5 @@ rbenv global $beloved_ruby_version
 
 # Reload
 source ~/.bash_profile
+
+# fin #

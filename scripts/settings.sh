@@ -9,8 +9,8 @@ mkdir -p ~/dev/wdi
 # you writ to Diana in behalf of the Count Rousillon?
 beget () {
   setting=$1
-  echo 'Moving '$setting'...'
-  cp "dotfiles/$setting" "~/.$setting"
+  echo "Moving $setting..."
+  cp "$src_settings/$setting" "${HOME}/.$setting"
 }
 
 # Useful settings
@@ -24,3 +24,5 @@ beget bash_settings # store additional settings like API keys
 
 # reload terminal
 source ~/.bash_profile
+
+# fin

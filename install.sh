@@ -5,12 +5,16 @@
 # |_|_| |_|___/\__\__,_|_|_|_|  \___||___/\__|
 #
 
-# InstallFest Script by Phillip Lamplugh, General Assembly Instructor (2014)
+# InstallFest Script
+# by
+# Phillip Lamplugh, General Assembly Instructor (2014)
+# PJ Hughes, General Assembly Instructor (2014)
 
 # Resources
 # https://github.com/divio/osx-bootstrap
 # https://github.com/paulirish/dotfiles
 # https://github.com/mathiasbynens/dotfiles/
+
 # References
 # http://www.sudo.ws/
 # http://www.gnu.org/software/bash/manual/bashref.html
@@ -39,7 +43,7 @@ fie () {
   exit
 }
 
-announcing () {
+figlet_announces () {
   act=$1
   figlet -f ogre $act
 }
@@ -54,7 +58,6 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 echo "Welcome to Installfest"
 sudo echo "Thanks." # PJ: capture the user's password
 
-
 echo "Please register for an account on github.com if you haven't already done so."
 
 read -p "Enter your full name: "  user_name
@@ -65,12 +68,13 @@ read -p "Github Email: "          github_email
 # Determine OS version ################################################################
 # PL: we may need to download x11?
 # http://xquartz.macosforge.org/landing/
+# Force the user to upgrade if they're below 10.7
 declare osvers=$(sw_vers -productVersion)
-declare latest_os="10.9.1"
+declare minimum_os="10.7.0"
 
 echo "You're running OSX $osvers"
-if [[ "$osvers" < "$latest_os" ]]; then
-  echo "Please think about upgrading to the latest OS"
+if [[ "$osvers" < "$minimum_os" ]]; then
+  fie "Please upgrade to the latest OS"
 fi
 
 #######################################################################################
@@ -82,34 +86,35 @@ sudo softwareupdate -i -a # PL: a Mac thing...
 #######################################################################################
 
 # The one prereq is Xcode Command Line Tools ##########################################
+# Either download from the App store or install via xcode-select --install
 # PL: it is possible earlier versions of xcode are installed to /dev... deal with this?
 if [ -x /Applications/Xcode.app/ ]; then
   echo "Xcode is installed. We may begin..."
 else
-  O_fie "Please install Xcode then rerun this script."
+  fie "Please install Xcode from the App Store. You can also try '$ xcode-select --install' then rerun this script."
 fi
 #######################################################################################
 
 quoth_the_bard "The play's the thing..."
 
 # Dramatis personae ###################################################################
-declare source_dir=~/.wdi-installfest
-declare source_scripts=$source_dir/scripts
-declare source_files=$source_dir/settings
-declare source_git=https://github.com/phlco/installfest_scripts.git
+declare src_dir=~/.wdi-installfest
+declare src_scripts=$src_dir/scripts
+declare src_settings=$src_dir/settings
+declare src_git=https://github.com/phlco/installfest_scripts.git
 
 # The curtain rises ###################################################################
 # download the repo for the absolute paths
-if [[ ! -d $source_dir ]]; then
+if [[ ! -d $src_dir ]]; then
   echo 'Downloading Installfest repo...'
   # autoupdate bootstrap file
-  git clone $source_git $source_dir
+  git clone $src_git $src_dir
   # hide folder
-  chflags hidden $source_dir
+  chflags hidden $src_dir
 else
   # update repo
   echo 'Updating repo...'
-  cd $source_dir
+  cd $src_dir
   git pull origin master
 fi
 #######################################################################################
@@ -126,7 +131,7 @@ quoth_the_bard \
 "Woe, destruction, ruin, and decay\; the worst is death and death will have his day." \
 "--Richard II (III.ii)"
 
-source $source_scripts/clean.sh
+source $src_scripts/clean.sh
 ######################################################################################
 
 # Install homebrew and formulae ######################################################
@@ -148,7 +153,7 @@ Boy: Would I were in an alehouse in London! I would give
 all my fame for a pot of ale and safety." \
 "--Henry V (III.ii)"
 
-source $source_scripts/brew.sh
+source $src_scripts/brew.sh
 ######################################################################################
 
 # Additional settings and bash_profile ###############################################
@@ -156,7 +161,7 @@ source $source_scripts/brew.sh
 # PHIL: What ho, Figlet!
 # FIGLET: It is a tale. Told by an idiot, full of sound and fury. Signifying nothing.
 # PHIL: Ummmmm, ok... Would you mind announcing the acts?
-announcing "act 1 - scene 3"
+figlet_announces "act 1 - scene 3"
 
 quoth_the_bard \
 "I have touch'd the highest point of all my greatness;
@@ -166,21 +171,21 @@ Like a bright exhalation in the evening,
 And no man see me more." \
 "--Henry VIII (III.ii)"
 
-source $source_scripts/settings.sh # PL: someday maybe these are kept in a hidden folder?
+source $src_scripts/settings.sh # PL: someday maybe these are kept in a hidden folder?
 #######################################################################################
 
 # Ruby setup ##########################################################################
-announcing "act 3 - scene 1"
+figlet_announces "act 3 - scene 1"
 
 quoth_the_bard \
 "Once more the ruby-colour'd portal open'd," \
 "--Venus and Adonis (1593)"
 
-source $source_scripts/rbenv.sh
+source $src_scripts/rbenv.sh
 #######################################################################################
 
 # git setup ###########################################################################
-announcing "act 2 - scene 1"
+figlet_announces "act 2 - scene 1"
 
 quoth_the_bard \
 "MARIA: This and these pearls to me sent Longaville:
@@ -190,19 +195,19 @@ PRINCESS OF FRANCE: I think no less. Dost thou not wish in heart
 The chain were longer and the letter short?" \
 "--Love's Labour Lost (V.ii)"
 
-source $source_scripts/git.sh
+source $src_scripts/git.sh
 #######################################################################################
 
 # Sublime setup #######################################################################
-announcing "act 2 - scene 2"
+figlet_announces "act 2 - scene 2"
 
 quoth_the_bard \
 "Suit the action to the word, the word to the action,
 with this special observance that you o'erstep not the modesty of nature." \
 "--Hamlet (III.ii)"
 
-source $source_scripts/sublime.sh
-source $source_scripts/terminal.sh # solarize terminal colors
+source $src_scripts/sublime.sh
+source $src_scripts/terminal.sh # solarize terminal colors
 #######################################################################################
 
 
@@ -210,19 +215,19 @@ source $source_scripts/terminal.sh # solarize terminal colors
 
 
 # Additional apps #####################################################################
-announcing "act 2 - scene 3"
+figlet_announces "act 2 - scene 3"
 
 quoth_the_bard \
 "Lend me an arm; the rest have worn me out
 With several applications..." \
 "--All's Well That Ends Well (I.ii)"
 
-source $source_scripts/apps.sh
+source $src_scripts/apps.sh
 #######################################################################################
 
 
 # Gem setup ###########################################################################
-announcing "act 3 - scene 2"
+figlet_announces "act 3 - scene 2"
 
 quoth_the_bard \
 "Making a couplement of proud compare,
@@ -231,21 +236,21 @@ With April's first-born flowers, and all things rare
 That heaven's air in this huge rondure hems." \
 "--Sonnet 21"
 
-source $source_scripts/gems.sh
+source $src_scripts/gems.sh
 #######################################################################################
 
 # Install Postgres ####################################################################
-announcing "act 4 - scene 1"
+figlet_announces "act 4 - scene 1"
 
 quoth_the_bard \
 "'Tis in my memory lock'd, And you yourself shall keep the key of it." \
 "--Hamlet (I.iii)"
 
-source $source_scripts/postgres.sh
+source $src_scripts/postgres.sh
 #######################################################################################
 
 # Reload ##############################################################################
-announcing "act 4 - scene 2"
+figlet_announces "act 4 - scene 2"
 
 quoth_the_bard \
 "Once more unto the breach, dear friends, once more;
@@ -257,8 +262,8 @@ source ~/.bash_profile
 
 # echo "All done? Let's run some tests..."
 
-# checkpoints
-ruby $source_scripts/checks.rb
+# checkpoints with ruby
+ruby $src_scripts/checks.rb
 
 quoth_the_bard \
 "Double, double toil and trouble; Fire burn, and caldron bubble." \
@@ -269,3 +274,5 @@ echo "You may want to run brew doctor to ensure everything is working."
 echo "Next make sure your SSH keys are setup."
 echo "Follow the instructions here:"
 echo "https://help.github.com/articles/generating-ssh-keys"
+
+# - fin - #

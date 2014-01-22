@@ -14,6 +14,6 @@ else
 fi
 
 # Install helpful formulae
-brew bundle "$source_files/Brewfile"
+brew bundle "$src_settings/Brewfile"
 
 # fin

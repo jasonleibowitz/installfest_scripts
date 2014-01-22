@@ -2,6 +2,7 @@
 gem update --system
 
 # Our gems to install
+# PL: Could move this to settings/ruby/default-gems and let rbenv-default-gems handle
 gem install awesome_print   # pretty print your Ruby objects with style
 gem install bundler         # Maintains a consistent environment for ruby applications.
 gem install pg              # ruby interface for Postgres

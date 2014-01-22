@@ -28,6 +28,7 @@ install qt4 #............... qt for mavericks
 install rbenv #............. our ruby version manager
 install ruby-build #........ provides an `rbenv install` command
 install rbenv-gem-rehash #.. automatically runs `rbenv rehash` command
+install rbenv-default-gems #  automatically install gems every time you install a new version of Ruby.
 
 # # Additional Players
 # install autoconf #.......... Autoconf is an extensible package of M4 macros that produce shell scripts to automatically configure software source code packages.
