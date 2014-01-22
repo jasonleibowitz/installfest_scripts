@@ -91,18 +91,25 @@
 
 # ## - FIN - ##
 
-read -p "Enter: " name
-echo $name
+# read -p "Enter: " name
+# echo $name
 
-# read -p "Enter your full name: "  user_name
-# read -p "Github Username: "       github_name
-# read -p "Github Email: "          github_email
+# # read -p "Enter your full name: "  user_name
+# # read -p "Github Username: "       github_name
+# # read -p "Github Email: "          github_email
 
-prithee () {
-  msg=$1
-  var=$2
-  read -p "$msg" $var
-}
+# prithee () {
+#   msg=$1
+#   var=$2
+#   read -p "$msg" $var
+# }
 
-prithee "What is your Github Username:" github_name
+# prithee "What is your Github Username:" github_name
 
+# # `which -s brew`
+# $(which -s brew)
+# if [[ $? != 0 ]]; then
+#   echo 'ok'
+# else
+#   echo 'no'
+# fi
