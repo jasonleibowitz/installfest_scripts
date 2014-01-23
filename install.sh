@@ -88,10 +88,13 @@ sudo softwareupdate -i -a # PL: a Mac thing...
 # The one prereq is Xcode Command Line Tools ##########################################
 # Either download from the App store or install via xcode-select --install
 # PL: it is possible earlier versions of xcode are installed to /dev... deal with this?
+# https://gist.github.com/trinitronx/6217746
+# if on mavericks just offer xcode-select
+# need a check for command line tools
 if [ -x /Applications/Xcode.app/ ]; then
   echo "Xcode is installed. We may begin..."
 else
-  fie "Please install Xcode from the App Store. You can also try '$ xcode-select --install' then rerun this script."
+  echo "Please install Xcode from the App Store. You can also try '$ xcode-select --install' then rerun this script."
 fi
 #######################################################################################
 
