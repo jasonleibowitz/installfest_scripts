@@ -91,6 +91,8 @@ sudo softwareupdate -i -a # PL: a Mac thing...
 # https://gist.github.com/trinitronx/6217746
 # if on mavericks just offer xcode-select
 # need a check for command line tools
+# `pkgutil --pkgs=com.apple.pkg.DeveloperToolsCLI` should return com.apple.pkg.DeveloperToolsCLI
+
 if [ -x /Applications/Xcode.app/ ]; then
   echo "Xcode is installed. We may begin..."
 else
