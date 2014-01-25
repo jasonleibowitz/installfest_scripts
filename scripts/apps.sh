@@ -16,16 +16,19 @@
 # of the several functions contained herein
 
 install_dmg () {
-  echo "Hark! A dmg!"
+  echo 'Hark, a dmg!'
   file_name="$1"
   MOUNTPOINT="/Volumes/MountPoint"
   # IFS=""
   hdiutil attach -mountpoint $MOUNTPOINT "$file_name.dmg"
-  for app in `find $MOUNTPOINT -type d -maxdepth 2 -name \*.app `; do
+  app=$(find $MOUNTPOINT 2>/dev/null -maxdepth 2 -iname \*.app)
+  if [ ! -z "$app" ]; then
     cp -a "$app" /Applications/
-  done
-  echo "Hark! A pkg!"
-  pkg=$(find $MOUNTPOINT 2>/dev/null -iname \*.pkg)
+  # for app in `find $MOUNTPOINT -type d -maxdepth 2 -name \*.app `; do
+  # done
+  fi
+  echo 'Hark! A pkg!'
+  pkg=$(find $MOUNTPOINT 2>/dev/null -maxdepth 2 -iname \*.pkg)
   if [ ! -z "$pkg" ]; then
     # PL: Need to handle harddrive names that aren't Macintosh HD
     sudo installer -package $pkg -target "/Volumes/Macintosh HD"
@@ -35,7 +38,7 @@ install_dmg () {
 
 install_zip () {
   file_name="$1"
-  echo "Hark! A zip!"
+  echo 'Hark! A zip!'
   mkdir "$file_name"
   unzip "$file_name.zip" -d "$file_name"
   mv $file_name/*.app /Applications
@@ -49,7 +52,7 @@ know_you_not_of () {
     echo "$file_name is already here.";
     return 1
   else
-    echo "Come forth!"
+    echo 'Come forth!'
     return 0
   fi
 }
@@ -59,7 +62,7 @@ lend_me_your () {
   file_name="$1"
   url="$2"
   ext=${url: -4}
-  echo "Lend me your $file_name!"
+  echo "Lend me your $file_name"
   if know_you_not_of "$file_name" ; then
     echo "Downloading from $url"
     curl -L -o "$file_name$ext" $url

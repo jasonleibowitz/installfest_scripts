@@ -183,10 +183,10 @@ fi
 quoth_the_bard "The play's the thing..."
 
 # Dramatis personae ###################################################################
-declare src_dir=~/.wdi-installfest
-declare src_scripts=$src_dir/scripts
-declare src_settings=$src_dir/settings
-declare src_git=https://github.com/phlco/installfest_scripts.git
+src_dir=~/.wdi-installfest
+src_scripts=$src_dir/scripts
+src_settings=$src_dir/settings
+src_git=https://github.com/phlco/installfest_scripts.git
 
 # The curtain rises ###################################################################
 # download the repo for the absolute paths
@@ -283,8 +283,19 @@ The chain were longer and the letter short?" \
 source $src_scripts/git.sh
 #######################################################################################
 
-# Sublime setup #######################################################################
+# Apps ###############################################################################
 figlet_announces "act 2 - scene 2"
+
+quoth_the_bard \
+"Lend me an arm; the rest have worn me out
+With several applications..." \
+"--All's Well That Ends Well (I.ii)"
+
+source $src_scripts/apps.sh
+#######################################################################################
+
+# Sublime setup #######################################################################
+figlet_announces "act 2 - scene 3"
 
 quoth_the_bard \
 "Suit the action to the word, the word to the action,
@@ -299,16 +310,6 @@ source $src_scripts/terminal.sh # solarize terminal colors
 # PJ STOPPED CHECKING HERE ...
 
 
-# Additional apps #####################################################################
-figlet_announces "act 2 - scene 3"
-
-quoth_the_bard \
-"Lend me an arm; the rest have worn me out
-With several applications..." \
-"--All's Well That Ends Well (I.ii)"
-
-source $src_scripts/apps.sh
-#######################################################################################
 
 
 # Gem setup ###########################################################################

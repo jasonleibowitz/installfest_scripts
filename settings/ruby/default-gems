@@ -5,11 +5,19 @@
 # Specify gems in ~/.rbenv/default-gems by name, one per line.
 # You may optionally specify a version string after the name, or --pre to install a prerelease version.
 
-awesome_print   # pretty print your Ruby objects with style
-bundler         # Maintains a consistent environment for ruby applications.
-pg              # ruby interface for Postgres
-pry             # alternative to the standard IRB shell
-rails           # full stack, Web application framework
-rspec           # testing tool for Ruby
-sinatra         # a DSL for quickly creating web applications in Ruby
-sinatra-contrib # common Sinatra extensions
+# pretty print your Ruby objects with style
+awesome_print
+# Maintains a consistent environment for ruby applications.
+bundler
+# ruby interface for Postgres
+pg
+# alternative to the standard IRB shell
+pry
+# full stack, Web application framework
+rails
+# testing tool for Ruby
+rspec
+# a DSL for quickly creating web applications in Ruby
+sinatra
+# common Sinatra extensions
+sinatra-contrib
