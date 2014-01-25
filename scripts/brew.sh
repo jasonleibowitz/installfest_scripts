@@ -1,7 +1,7 @@
 # This script installs Homebrew, our package manager
 # http://brew.sh/
 
-which -s brew
+$(which -s brew)
 if [[ $? != 0 ]]; then
     echo ''
     echo 'Installing Homebrew...'
