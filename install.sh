@@ -331,10 +331,8 @@ Or close the wall up with our English dead." \
 source ~/.bash_profile
 #######################################################################################
 
-# echo "All done? Let's run some tests..."
-
-# checkpoints with ruby
-ruby $src_scripts/checks.rb
+# checkpoints
+source $src_scripts/checks.sh
 
 quoth_the_bard \
 "Double, double toil and trouble; Fire burn, and caldron bubble." \

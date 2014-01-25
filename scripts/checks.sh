@@ -9,7 +9,7 @@
 what_news_of () {
   app_name=$1
   echo "What news of $app_name?"
-  if [ ! -x "/Applications/$app_name*.app" ]; then
+  if [ ! -x "/Applications/$app_name.app" ]; then
     echo "Alack! No news of $app_name";
   else
     echo "$app_name is well"
