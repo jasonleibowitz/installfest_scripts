@@ -8,9 +8,9 @@ if [[ $term_default != *Solarized* ]]; then
   unzip "solarized.zip"
   open "osx-terminal.app-colors-solarized-master/Solarized Light.terminal"
   open "osx-terminal.app-colors-solarized-master/Solarized Dark.terminal"
-  rm solarized.zip
   defaults write com.apple.terminal "Default Window Settings" -string "Solarized Dark"
   defaults write com.apple.terminal "Startup Window Settings" -string "Solarized Dark"
+  rm solarized.zip
   rm -rf "osx-terminal.app-colors-solarized-master"
 else
   echo "Solarized Colors already installed";

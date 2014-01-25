@@ -9,9 +9,8 @@
 what_news_of () {
   app_name=$1
   echo "What news of $app_name?"
-  if [ ! -x "/Applications/$app_name.app" ]; then
+  if [ ! -x "/Applications/$app_name*.app" ]; then
     echo "Alack! No news of $app_name";
-    return 1
   else
     echo "$app_name is well"
   fi
@@ -54,12 +53,12 @@ fi
 dost_thou_have ~/.bash_profile
 dost_thou_have ~/.gitignore_global
 dost_thou_have ~/.gitconfig
-dost_thou_have ~/Library/Application\ Support/Sublime\ Text\ 2/Installed\ Packages
+dost_thou_have ~/Library/Application\ Support/Sublime\ Text\ */Installed\ Packages
 dost_thou_have ~/dev/wdi/WDI_NYC_12
 
 # Applications
 what_news_of "Spectacle"
-what_news_of "Sublime Text 2"
+what_news_of "Sublime Text"
 what_news_of "HipChat"
 what_news_of "Google Chrome"
 what_news_of "Mou"
@@ -67,15 +66,16 @@ what_news_of "Mou"
 # Your ssh keys are set up (see [here](https://help.github.com/articles/generating-ssh-keys) for instructions)
 
 # Sublime Checks
-export sublime="${HOME}/Library/Application Support/Sublime Text 2/Packages/User"
-export subl_prefs=$(cat "$sublime/Preferences.sublime-settings")
-export tab_size="\"tab_size\": 2"
-export tab_to_space="\"translate_tabs_to_spaces\": true"
+# Just checking for Sublime 3
+sublime="${HOME}/Library/Application Support/Sublime Text 3/Packages/User"
+subl_prefs=$(cat "$sublime/Preferences.sublime-settings")
+tab_size="\"tab_size\": 2"
+tab_to_space="\"translate_tabs_to_spaces\": true"
 
 if [[ "$subl_prefs" != *$tab_size* ]]; then
-  fie "Tab size must be set to 2!"
+  echo "Tab size must be set to 2!"
 fi
 
 if [[ "$subl_prefs" != *$tab_to_space* ]]; then
-  fie "Translate tabs to spaces must be true!"
+  echo "Translate tabs to spaces must be true!"
 fi
