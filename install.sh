@@ -159,15 +159,18 @@ case $osx_version in
   *10.7*) cmdline_version=""                    ;; # Lion
   *) echo "Please upgrade your OS";;
 esac
+
 # Check for Command Line Tools based on OS versions
 if [ ! -z $(pkgutil --pkgs=com.apple.pkg.$cmdline_version) ]; then
-  echo "Command Line Tools are installed"
+  echo "Command Line Tools are installed";
+else
+  echo "Command Line tools are not installed";
 fi
 
 # May remove full Xcode check.
 if [ -x /Applications/Xcode.app/ ]; then
   echo "Xcode is installed. We may begin..."
-elif [ $osx_version < "10.9" ]; then
+elif [[ $osx_version < "10.9" ]]; then
   echo "Please install Xcode from the App Store."
 else
   echo "Install Command Line Tools"
