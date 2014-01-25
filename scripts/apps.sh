@@ -96,4 +96,7 @@ else
   lend_me_your "Sublime Text"   "http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%20Build%203059.dmg"
 fi
 
+# PL: Application Support
+open -a "Sublime Text"
+killall "Sublime Text"
 ## - FIN - ##
