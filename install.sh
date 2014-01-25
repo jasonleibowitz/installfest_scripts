@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 #  _           _        _ _  __           _
 # (_)_ __  ___| |_ __ _| | |/ _| ___  ___| |_
 # | | '_ \/ __| __/ _` | | | |_ / _ \/ __| __|
@@ -21,13 +22,57 @@
 # http://www.shellcheck.net
 # http://explainshell.com/
 
+# Colors
+# BLACK=$(tput setaf 0)
+# BLUE=$(tput setaf 4)
+# CYAN=$(tput setaf 6)
+# GREEN=$(tput setaf 2)
+# MAGENTA=$(tput setaf 5)
+# ORANGE=$(tput setaf 172)
+# PURPLE=$(tput setaf 141)
+# RED=$(tput setaf 1)
+# WHITE=$(tput setaf 7)
+# YELLOW=$(tput setaf 226)
+# BG_BLACK=$(tput setab 0)
+# BG_BLUE=$(tput setab 4)
+# BG_CYAN=$(tput setab 6)
+# BG_GREEN=$(tput setab 2)
+# BG_MAGENTA=$(tput setab 5)
+# BG_ORANGE=$(tput setab 172)
+# BG_RED=$(tput setab 1)
+# BG_WHITE=$(tput setab 7)
+# BG_YELLOW=$(tput setab 226)
+# RESET=$(tput sgr0)
+
+# regular colors
+export BLACK='\e[30m'
+export RED='\e[31m'
+export GREEN='\e[32m'
+export YELLOW='\e[33m'
+export BLUE='\e[34m'
+export PURPLE='\e[35m'
+export CYAN='\e[36m'
+export WHITE='\e[37m'
+
+# background colors
+export BG_BLACK='\e[40m'
+export BG_RED='\e[41m'
+export BG_GREEN='\e[42m'
+export BG_YELLOW='\e[43m'
+export BG_BLUE='\e[44m'
+export BG_PURPLE='\e[45m'
+export BG_CYAN='\e[46m'
+export BG_WHITE='\e[47m'
+
+# modifiers
+export RESET='\e[0m'
+export BOLD='\e[1m'
+export UNDERLINE='\e[4m'
+
 # ABRB
 quoth_the_bard () {
-  message=$1
-  attribution=$2
-  YELLOW=$(tput setaf 226)
-  RESET=$(tput sgr0)
-  PURPLE=$(tput setaf 141)
+  local message=$1
+  local attribution=$2
   echo ""
   echo "$YELLOW$message$RESET"
   echo "$PURPLE$attribution$RESET"
@@ -35,28 +80,41 @@ quoth_the_bard () {
 
 fie () {
   # upcase the message
-  message=$(echo $1 | tr 'a-z' 'A-Z')
-  RED=$(tput setaf 1)
-  RESET=$(tput sgr0)
+  local message=$(echo $1 | tr 'a-z' 'A-Z')
   echo ""
   echo "$RED$message$RESET"
   exit
 }
 
 figlet_announces () {
-  act=$1
+  local act=$1
   figlet -f ogre $act
+}
+
+# Checking for Command Line Tools
+have_you_the_command_line_tools () {
+  osx_version=$(sw_vers -productVersion)
+  case $osx_version in
+    *10.9*) cmdline_version="CLTools_Executables" ;; # Mavericks
+    *10.8*) cmdline_version="DeveloperToolsCLI"   ;; # Mountain Lion
+    *10.7*) cmdline_version=""                    ;; # Lion
+    *) echo "Please upgrade your OS";;
+  esac
+  # Check for Command Line Tools based on OS versions
+  if [ ! -z $(pkgutil --pkgs=com.apple.pkg.$cmdline_version) ]; then
+    echo "Command Line Tools are installed"
+  fi
 }
 
 # clear terminal screen
 clear
 
+echo "Welcome to Installfest"
+sudo echo "Thanks." # PJ: capture the user's password
+
 # Start install fest ###################################################################
 # Keep-alive: update existing `sudo` time stamp until script has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-
-echo "Welcome to Installfest"
-sudo echo "Thanks." # PJ: capture the user's password
 
 echo "Please register for an account on github.com if you haven't already done so."
 
@@ -68,21 +126,22 @@ read -p "Github Email: "          github_email
 # Determine OS version ################################################################
 # PL: we may need to download x11?
 # http://xquartz.macosforge.org/landing/
-# Force the user to upgrade if they're below 10.7
-declare osvers=$(sw_vers -productVersion)
-declare minimum_os="10.7.0"
 
-echo "You're running OSX $osvers"
-if [[ "$osvers" < "$minimum_os" ]]; then
+osx_version=$(sw_vers -productVersion)
+MINIMUM_OS="10.7.0"
+
+# Force the user to upgrade if they're below 10.7
+echo "You're running OSX $osx_version"
+if [[ "$osx_version" < "$MINIMUM_OS" ]]; then
   fie "Please upgrade to the latest OS"
 fi
 
 #######################################################################################
 
 # Let's make sure we're updated #######################################################
-echo "Checking for software updates..."
-
-sudo softwareupdate -i -a # PL: a Mac thing...
+echo "Checking for recommended software updates."
+echo "This may require a restart."
+sudo softwareupdate -i -r --ignore iTunes
 #######################################################################################
 
 # The one prereq is Xcode Command Line Tools ##########################################
@@ -93,10 +152,28 @@ sudo softwareupdate -i -a # PL: a Mac thing...
 # need a check for command line tools
 # `pkgutil --pkgs=com.apple.pkg.DeveloperToolsCLI` should return com.apple.pkg.DeveloperToolsCLI
 
+# Check that command line tools are installed
+case $osx_version in
+  *10.9*) cmdline_version="CLTools_Executables" ;; # Mavericks
+  *10.8*) cmdline_version="DeveloperToolsCLI"   ;; # Mountain Lion
+  *10.7*) cmdline_version=""                    ;; # Lion
+  *) echo "Please upgrade your OS";;
+esac
+# Check for Command Line Tools based on OS versions
+if [ ! -z $(pkgutil --pkgs=com.apple.pkg.$cmdline_version) ]; then
+  echo "Command Line Tools are installed"
+fi
+
+# May remove full Xcode check.
 if [ -x /Applications/Xcode.app/ ]; then
   echo "Xcode is installed. We may begin..."
+elif [ $osx_version < "10.9" ]; then
+  echo "Please install Xcode from the App Store."
 else
-  echo "Please install Xcode from the App Store. You can also try '$ xcode-select --install' then rerun this script."
+  echo "Install Command Line Tools"
+  echo "run '$ sudo xcodebuild -license' then"
+  echo "'$ xcode-select --install'"
+  echo "then rerun this script."
 fi
 #######################################################################################
 
@@ -158,7 +235,7 @@ Boy: Would I were in an alehouse in London! I would give
 all my fame for a pot of ale and safety." \
 "--Henry V (III.ii)"
 
-source $src_scripts/brew.sh
+source $src_srcripts/brew.sh
 ######################################################################################
 
 # Additional settings and bash_profile ###############################################

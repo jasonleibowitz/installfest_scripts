@@ -19,4 +19,4 @@ Files:
 Optional:
 
 * (Mac) You have Spectacle installed on your computer and can use it to manage your windows
-* (Before we begin GitHub) Your ssh keys are set up (see https://help.github.com/articles/generating-ssh-keys for instructions)
+* (Before we begin GitHub) Your ssh keys are set up (see [https://help.github.com/articles/generating-ssh-keys](https://help.github.com/articles/generating-ssh-keys) for instructions
