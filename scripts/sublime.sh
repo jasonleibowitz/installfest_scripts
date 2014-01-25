@@ -1,3 +1,5 @@
+echo "Installing settings for Sublime Text $subl_vers"
+
 if [ "$subl_vers" == "2" ]; then
   subl_settings="${HOME}/Library/Application Support/Sublime Text 2"
   # Symlink Sublime Text 2
@@ -15,11 +17,13 @@ cp "$src_settings/sublime/$user_prefs" "$subl_settings/Packages/User/$user_prefs
 # Installing Package Control
 pkg_control="Package Control.sublime-package"
 pkg_url="https://sublime.wbond.net/Package%20Control.sublime-package"
-curl -L -o "$pkg_control" "$pkg_url"
-mv "$pkg_control" "$subl_settings/Installed Packages"
+curl -L -o "$subl_settings/Installed Packages/$pkg_control" "$pkg_url"
 
 # Install Packages
 pkg_settings="Package Control.sublime-settings"
 cp "$src_settings/sublime/$pkg_settings" "$subl_settings/Installed Packages/$pkg_settings"
 
 # fin #
+
+
+# /Users/instructor/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Preferences.sublime-settings

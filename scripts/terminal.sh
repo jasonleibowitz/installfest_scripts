@@ -7,7 +7,9 @@ if [[ $term_default != *Solarized* ]]; then
   curl -L -o "solarized.zip" https://github.com/tomislav/osx-terminal.app-colors-solarized/archive/master.zip;
   unzip "solarized.zip"
   open "osx-terminal.app-colors-solarized-master/Solarized Light.terminal"
+  sleep 1
   open "osx-terminal.app-colors-solarized-master/Solarized Dark.terminal"
+  sleep 1
   defaults write com.apple.terminal "Default Window Settings" -string "Solarized Dark"
   defaults write com.apple.terminal "Startup Window Settings" -string "Solarized Dark"
   rm solarized.zip
