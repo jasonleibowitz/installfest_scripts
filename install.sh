@@ -163,21 +163,31 @@ esac
 # Check for Command Line Tools based on OS versions
 if [ ! -z $(pkgutil --pkgs=com.apple.pkg.$cmdline_version) ]; then
   echo "Command Line Tools are installed";
-else
-  echo "Command Line tools are not installed";
-fi
-
-# May remove full Xcode check.
-if [ -x /Applications/Xcode.app/ ]; then
-  echo "Xcode is installed. We may begin..."
 elif [[ $osx_version < "10.9" ]]; then
-  echo "Please install Xcode from the App Store."
+  echo "Command Line Tools are not installed"
+  echo "Register for a Developer Account"
+  echo "Download the tools from"
+  echo "https://developer.apple.com/downloads/index.action"
+  exit 1
 else
-  echo "Install Command Line Tools"
+  echo "Command Line Tools are not installed"
   echo "run '$ sudo xcodebuild -license' then"
   echo "'$ xcode-select --install'"
   echo "then rerun this script."
+  exit 1
 fi
+
+# # May remove full Xcode check.
+# if [ -x /Applications/Xcode.app/ ]; then
+#   echo "Xcode is installed. We may begin..."
+# elif [[ $osx_version < "10.9" ]]; then
+#   echo "Please install Xcode from the App Store."
+# else
+#   echo "Install Command Line Tools"
+#   echo "run '$ sudo xcodebuild -license' then"
+#   echo "'$ xcode-select --install'"
+#   echo "then rerun this script."
+# fi
 #######################################################################################
 
 quoth_the_bard "The play's the thing..."
