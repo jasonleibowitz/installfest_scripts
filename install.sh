@@ -51,6 +51,7 @@ RESET=$(tput sgr0)
 
 # ABRB
 quoth_the_bard () {
+  clear
   local message=$1
   local attribution=$2
   echo ""
@@ -72,19 +73,71 @@ figlet_announces () {
 }
 
 # Checking for Command Line Tools
-have_you_the_command_line_tools () {
-  osx_version=$(sw_vers -productVersion)
-  case $osx_version in
-    *10.9*) cmdline_version="CLTools_Executables" ;; # Mavericks
-    *10.8*) cmdline_version="DeveloperToolsCLI"   ;; # Mountain Lion
-    *10.7*) cmdline_version=""                    ;; # Lion
-    *) echo "Please upgrade your OS";;
-  esac
-  # Check for Command Line Tools based on OS versions
-  if [ ! -z $(pkgutil --pkgs=com.apple.pkg.$cmdline_version) ]; then
-    echo "Command Line Tools are installed"
-  fi
-}
+# have_you_the_command_line_tools () {
+#   osx_version=$(sw_vers -productVersion)
+#   case $osx_version in
+#     *10.9*) cmdline_version="CLTools_Executables" ;; # Mavericks
+#     *10.8*) cmdline_version="DeveloperToolsCLI"   ;; # Mountain Lion
+#     *10.7*) cmdline_version=""                    ;; # Lion
+#     *) echo "Please upgrade your OS";;
+#   esac
+#   # Check for Command Line Tools based on OS versions
+#   if [ ! -z $(pkgutil --pkgs=com.apple.pkg.$cmdline_version) ]; then
+#     echo "Command Line Tools are installed"
+#   fi
+# }
+
+# Determine OS version ################################################################
+# PL: we may need to download x11?
+# http://xquartz.macosforge.org/landing/
+
+osx_version=$(sw_vers -productVersion)
+MINIMUM_OS="10.7.0"
+
+# Force the user to upgrade if they're below 10.7
+echo "You're running OSX $osx_version"
+if [[ "$osx_version" < "$MINIMUM_OS" ]]; then
+  fie "Please upgrade to the latest OS then rerun this script."
+fi
+
+# The one prereq is Xcode Command Line Tools ##########################################
+# Either download from the App store or install via xcode-select --install
+# PL: it is possible earlier versions of xcode are installed to /dev... deal with this?
+# https://gist.github.com/trinitronx/6217746
+# if on mavericks just offer xcode-select
+# need a check for command line tools
+# `pkgutil --pkgs=com.apple.pkg.DeveloperToolsCLI` should return com.apple.pkg.DeveloperToolsCLI
+
+#######################################################################################
+
+# Check that command line tools are installed
+case $osx_version in
+  *10.9*) cmdline_version="CLTools_Executables" ;; # Mavericks
+  *10.8*) cmdline_version="DeveloperToolsCLI"   ;; # Mountain Lion
+  *10.7*) cmdline_version="DeveloperToolsCLI"   ;; # Lion # PL: Need to check
+  *) echo "Please upgrade your OS";;
+esac
+
+# Check for Command Line Tools based on OS versions
+if [ ! -z $(pkgutil --pkgs=com.apple.pkg.$cmdline_version) ]; then
+  echo "Command Line Tools are installed";
+elif [[ $osx_version < "10.9" ]]; then
+  echo "Command Line Tools are not installed"
+  echo "Register for a Developer Account"
+  echo "Download the tools from"
+  echo "https://developer.apple.com/downloads/index.action"
+  echo "Then rerun this script"
+  exit 1
+else
+  echo "Command Line Tools are not installed"
+  echo "run '$ sudo xcodebuild -license' then"
+  echo "'$ xcode-select --install'"
+  echo "Then rerun this script."
+  exit 1
+fi
+
+
+#######################################################################################
 
 # clear terminal screen
 clear
@@ -103,71 +156,10 @@ read -p "Github Username: "       github_name
 read -p "Github Email: "          github_email
 #######################################################################################
 
-# Determine OS version ################################################################
-# PL: we may need to download x11?
-# http://xquartz.macosforge.org/landing/
-
-osx_version=$(sw_vers -productVersion)
-MINIMUM_OS="10.7.0"
-
-# Force the user to upgrade if they're below 10.7
-echo "You're running OSX $osx_version"
-if [[ "$osx_version" < "$MINIMUM_OS" ]]; then
-  fie "Please upgrade to the latest OS"
-fi
-
-#######################################################################################
-
 # Let's make sure we're updated #######################################################
 echo "Checking for recommended software updates."
 echo "This may require a restart."
 sudo softwareupdate -i -r --ignore iTunes
-#######################################################################################
-
-# The one prereq is Xcode Command Line Tools ##########################################
-# Either download from the App store or install via xcode-select --install
-# PL: it is possible earlier versions of xcode are installed to /dev... deal with this?
-# https://gist.github.com/trinitronx/6217746
-# if on mavericks just offer xcode-select
-# need a check for command line tools
-# `pkgutil --pkgs=com.apple.pkg.DeveloperToolsCLI` should return com.apple.pkg.DeveloperToolsCLI
-
-# Check that command line tools are installed
-case $osx_version in
-  *10.9*) cmdline_version="CLTools_Executables" ;; # Mavericks
-  *10.8*) cmdline_version="DeveloperToolsCLI"   ;; # Mountain Lion
-  *10.7*) cmdline_version=""                    ;; # Lion
-  *) echo "Please upgrade your OS";;
-esac
-
-# Check for Command Line Tools based on OS versions
-if [ ! -z $(pkgutil --pkgs=com.apple.pkg.$cmdline_version) ]; then
-  echo "Command Line Tools are installed";
-elif [[ $osx_version < "10.9" ]]; then
-  echo "Command Line Tools are not installed"
-  echo "Register for a Developer Account"
-  echo "Download the tools from"
-  echo "https://developer.apple.com/downloads/index.action"
-  exit 1
-else
-  echo "Command Line Tools are not installed"
-  echo "run '$ sudo xcodebuild -license' then"
-  echo "'$ xcode-select --install'"
-  echo "then rerun this script."
-  exit 1
-fi
-
-# # May remove full Xcode check.
-# if [ -x /Applications/Xcode.app/ ]; then
-#   echo "Xcode is installed. We may begin..."
-# elif [[ $osx_version < "10.9" ]]; then
-#   echo "Please install Xcode from the App Store."
-# else
-#   echo "Install Command Line Tools"
-#   echo "run '$ sudo xcodebuild -license' then"
-#   echo "'$ xcode-select --install'"
-#   echo "then rerun this script."
-# fi
 #######################################################################################
 
 quoth_the_bard "The play's the thing..."
@@ -298,8 +290,6 @@ source $src_scripts/terminal.sh # solarize terminal colors
 
 
 # PJ STOPPED CHECKING HERE ...
-
-
 
 
 # Gem setup ###########################################################################
