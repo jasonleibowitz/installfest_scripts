@@ -1,14 +1,16 @@
+#!/usr/bin/env
+#
 #  _           _        _ _  __           _
 # (_)_ __  ___| |_ __ _| | |/ _| ___  ___| |_
 # | | '_ \/ __| __/ _` | | | |_ / _ \/ __| __|
 # | | | | \__ \ || (_| | | |  _|  __/\__ \ |_
 # |_|_| |_|___/\__\__,_|_|_|_|  \___||___/\__|
 #
-
-# InstallFest Script
-# by
-# Phillip Lamplugh, General Assembly Instructor (2014)
-# PJ Hughes, General Assembly Instructor (2014)
+# Installfest Script for development on a Mac
+#
+# Author: Phillip Lamplugh, GA Instructor (2014)
+# Contributions: PJ Hughes, GA Instructor (2014)
+#
 
 # Resources
 # https://github.com/divio/osx-bootstrap
@@ -21,7 +23,9 @@
 # http://www.shellcheck.net
 # http://explainshell.com/
 
+#-------------------------------------------------------------------------------
 # Colors
+#-------------------------------------------------------------------------------
 # Foreground
 BLACK=$(tput setaf 0)
 BLUE=$(tput setaf 4)
@@ -49,6 +53,9 @@ NOUNDERLINE=$(tput rmul)
 BOLD=$(tput bold)
 RESET=$(tput sgr0)
 
+#-------------------------------------------------------------------------------
+# Functions
+#-------------------------------------------------------------------------------
 # ABRB
 quoth_the_bard () {
   clear
@@ -72,28 +79,18 @@ figlet_announces () {
   figlet -f ogre $act
 }
 
-# Checking for Command Line Tools
-# have_you_the_command_line_tools () {
-#   osx_version=$(sw_vers -productVersion)
-#   case $osx_version in
-#     *10.9*) cmdline_version="CLTools_Executables" ;; # Mavericks
-#     *10.8*) cmdline_version="DeveloperToolsCLI"   ;; # Mountain Lion
-#     *10.7*) cmdline_version=""                    ;; # Lion
-#     *) echo "Please upgrade your OS";;
-#   esac
-#   # Check for Command Line Tools based on OS versions
-#   if [ ! -z $(pkgutil --pkgs=com.apple.pkg.$cmdline_version) ]; then
-#     echo "Command Line Tools are installed"
-#   fi
-# }
+#-------------------------------------------------------------------------------
+MINIMUM_OS="10.7.0"
+BELOVED_RUBY_VERSION="2.1.0"
+
+SRC_DIR=~/.wdi-installfest
+SCRIPTS=$SRC_DIR/scripts
+SETTINGS=$SRC_DIR/settings
+INSTALL_REPO=https://github.com/phlco/installfest_scripts.git
 
 # Determine OS version ################################################################
-# PL: we may need to download x11?
-# http://xquartz.macosforge.org/landing/
 
 osx_version=$(sw_vers -productVersion)
-MINIMUM_OS="10.7.0"
-
 # Force the user to upgrade if they're below 10.7
 echo "You're running OSX $osx_version"
 if [[ "$osx_version" < "$MINIMUM_OS" ]]; then
@@ -114,8 +111,8 @@ fi
 case $osx_version in
   *10.9*) cmdline_version="CLTools_Executables" ;; # Mavericks
   *10.8*) cmdline_version="DeveloperToolsCLI"   ;; # Mountain Lion
-  *10.7*) cmdline_version="DeveloperToolsCLI"   ;; # Lion # PL: Need to check
-  *) echo "Please upgrade your OS";;
+  *10.7*) cmdline_version="DeveloperToolsCLI"   ;; # Lion
+  *) echo "Please upgrade your OS"; exit 1;;
 esac
 
 # Check for Command Line Tools based on OS versions
@@ -124,7 +121,7 @@ if [ ! -z $(pkgutil --pkgs=com.apple.pkg.$cmdline_version) ]; then
 elif [[ $osx_version < "10.9" ]]; then
   echo "Command Line Tools are not installed"
   echo "Register for a Developer Account"
-  echo "Download the tools from"
+  echo "Download the Command Lion Tools from"
   echo "https://developer.apple.com/downloads/index.action"
   echo "Then rerun this script"
   exit 1
@@ -157,6 +154,7 @@ read -p "Github Email: "          github_email
 #######################################################################################
 
 # Let's make sure we're updated #######################################################
+diskutil repairPermissions /
 echo "Checking for recommended software updates."
 echo "This may require a restart."
 sudo softwareupdate -i -r --ignore iTunes
@@ -164,24 +162,18 @@ sudo softwareupdate -i -r --ignore iTunes
 
 quoth_the_bard "The play's the thing..."
 
-# Dramatis personae ###################################################################
-src_dir=~/.wdi-installfest
-src_scripts=$src_dir/scripts
-src_settings=$src_dir/settings
-src_git=https://github.com/phlco/installfest_scripts.git
-
 # The curtain rises ###################################################################
 # download the repo for the absolute paths
-if [[ ! -d $src_dir ]]; then
+if [[ ! -d $SRC_DIR ]]; then
   echo 'Downloading Installfest repo...'
   # autoupdate bootstrap file
-  git clone $src_git $src_dir
+  git clone $INSTALL_REPO $SRC_DIR
   # hide folder
-  chflags hidden $src_dir
+  chflags hidden $SRC_DIR
 else
   # update repo
   echo 'Updating repo...'
-  cd $src_dir
+  cd $SRC_DIR
   git pull origin master
 fi
 #######################################################################################
@@ -198,7 +190,7 @@ quoth_the_bard \
 "Woe, destruction, ruin, and decay\; the worst is death and death will have his day." \
 "--Richard II (III.ii)"
 
-source $src_scripts/clean.sh
+source $SCRIPTS/clean.sh
 ######################################################################################
 
 # Install homebrew and formulae ######################################################
@@ -220,7 +212,7 @@ Boy: Would I were in an alehouse in London! I would give
 all my fame for a pot of ale and safety." \
 "--Henry V (III.ii)"
 
-source $src_scripts/brew.sh
+source $SCRIPTS/brew.sh
 ######################################################################################
 
 # Additional settings and bash_profile ###############################################
@@ -238,7 +230,7 @@ Like a bright exhalation in the evening,
 And no man see me more." \
 "--Henry VIII (III.ii)"
 
-source $src_scripts/settings.sh # PL: someday maybe these are kept in a hidden folder?
+source $SCRIPTS/settings.sh # PL: someday maybe these are kept in a hidden folder?
 #######################################################################################
 
 # Ruby setup ##########################################################################
@@ -248,7 +240,7 @@ quoth_the_bard \
 "Once more the ruby-colour'd portal open'd," \
 "--Venus and Adonis (1593)"
 
-source $src_scripts/rbenv.sh
+source $SCRIPTS/rbenv.sh
 #######################################################################################
 
 # git setup ###########################################################################
@@ -262,7 +254,7 @@ PRINCESS OF FRANCE: I think no less. Dost thou not wish in heart
 The chain were longer and the letter short?" \
 "--Love's Labour Lost (V.ii)"
 
-source $src_scripts/git.sh
+source $SCRIPTS/git.sh
 #######################################################################################
 
 # Apps ###############################################################################
@@ -273,7 +265,7 @@ quoth_the_bard \
 With several applications..." \
 "--All's Well That Ends Well (I.ii)"
 
-source $src_scripts/apps.sh
+source $SCRIPTS/apps.sh
 #######################################################################################
 
 # Sublime setup #######################################################################
@@ -284,8 +276,8 @@ quoth_the_bard \
 with this special observance that you o'erstep not the modesty of nature." \
 "--Hamlet (III.ii)"
 
-source $src_scripts/sublime.sh
-source $src_scripts/terminal.sh # solarize terminal colors
+source $SCRIPTS/sublime.sh
+source $SCRIPTS/terminal.sh # solarize terminal colors
 #######################################################################################
 
 
@@ -302,7 +294,7 @@ With April's first-born flowers, and all things rare
 That heaven's air in this huge rondure hems." \
 "--Sonnet 21"
 
-source $src_scripts/gems.sh
+source $SCRIPTS/gems.sh
 #######################################################################################
 
 # Install Postgres ####################################################################
@@ -312,7 +304,7 @@ quoth_the_bard \
 "'Tis in my memory lock'd, And you yourself shall keep the key of it." \
 "--Hamlet (I.iii)"
 
-source $src_scripts/postgres.sh
+source $SCRIPTS/postgres.sh
 #######################################################################################
 
 # Reload ##############################################################################
@@ -327,7 +319,7 @@ source ~/.bash_profile
 #######################################################################################
 
 # checkpoints
-source $src_scripts/checks.sh
+source $SCRIPTS/checks.sh
 
 quoth_the_bard \
 "Double, double toil and trouble; Fire burn, and caldron bubble." \

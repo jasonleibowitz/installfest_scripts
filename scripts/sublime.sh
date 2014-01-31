@@ -12,7 +12,7 @@ fi
 
 # Set sublime user preferences
 user_prefs="Preferences.sublime-settings"
-cp "$src_settings/sublime/$user_prefs" "$subl_settings/Packages/User/$user_prefs"
+cp "$SETTINGS/sublime/$user_prefs" "$subl_settings/Packages/User/$user_prefs"
 
 # Installing Package Control
 pkg_control="Package Control.sublime-package"
@@ -21,7 +21,7 @@ curl -L -o "$subl_settings/Installed Packages/$pkg_control" "$pkg_url"
 
 # Install Packages
 pkg_settings="Package Control.sublime-settings"
-cp "$src_settings/sublime/$pkg_settings" "$subl_settings/Installed Packages/$pkg_settings"
+cp "$SETTINGS/sublime/$pkg_settings" "$subl_settings/Installed Packages/$pkg_settings"
 
 # fin #
 

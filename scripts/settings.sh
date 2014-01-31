@@ -12,7 +12,7 @@ mkdir -p ~/dev/wdi
 beget () {
   setting=$1
   echo "Moving $setting..."
-  cp "$src_settings/dotfiles/$setting" "${HOME}/.$setting"
+  cp "$SETTINGS/dotfiles/$setting" "${HOME}/.$setting"
 }
 
 # Useful settings

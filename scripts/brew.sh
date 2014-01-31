@@ -43,7 +43,7 @@ brew install ruby-build #........ provides an `rbenv install` command
 # install automake #.......... Automake is a tool for automatically generating Makefile.in
 # install git-flow #.......... Git extensions to provide high-level repository operations
 # install libtool #........... generic library support script
-# install libyaml #........... a YAML 1.1 parser and emitter
+install libyaml #........... a YAML 1.1 parser and emitter
 # install neon #.............. neon is an HTTP and WebDAV client library
 # install openssl #........... A toolkit implementing SSL v2/v3 and TLS protocols with full-strength cryptography world-wide.
 # install pkg-config #........ pkg-config is a helper tool used when compiling applications and libraries.
