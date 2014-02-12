@@ -25,3 +25,14 @@ else
   echo "'$ xcode-select --install'"
   echo "then rerun this script."
 fi
+
+
+# OSX Defaults
+# Disable the “Are you sure you want to open this application?” dialog
+defaults write com.apple.LaunchServices LSQuarantine -bool false
+# Disable the warning when changing a file extension
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+# Show the ~/Library folder
+chflags nohidden ~/Library
+# Use plain text mode for new TextEdit documents
+defaults write com.apple.TextEdit RichText -int 0
