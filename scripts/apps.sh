@@ -31,7 +31,7 @@ install_dmg () {
   pkg=$(find $MOUNTPOINT 2>/dev/null -maxdepth 2 -iname \*.pkg)
   if [ ! -z "$pkg" ]; then
     # PL: Need to handle harddrive names that aren't Macintosh HD
-    sudo installer -package $pkg -target "/Volumes/Macintosh HD"
+    sudo installer -package $pkg -target /
   fi
   hdiutil detach $MOUNTPOINT
 }
@@ -96,7 +96,14 @@ else
   lend_me_your "Sublime Text"   "http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%20Build%203059.dmg"
 fi
 
+############################### Silence HipChat ################################
+# We bid be quiet when we hear it cry;
+defaults write com.hipchat.hipchat disableSounds -bool true
+defaults write com.hipchat.hipchat notificationVolume -float 100
+killall HipChat
+
 # PL: Application Support
 open -a "Sublime Text"
 killall "Sublime Text"
 ## - FIN - ##
+
