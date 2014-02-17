@@ -1,4 +1,3 @@
-#!/usr/bin/env
 #
 #  _           _        _ _  __           _
 # (_)_ __  ___| |_ __ _| | |/ _| ___  ___| |_
@@ -57,7 +56,7 @@ RESET=$(tput sgr0)
 # Functions
 #-------------------------------------------------------------------------------
 # ABRB
-quoth_the_bard () {
+function quoth_the_bard () {
   clear
   local message=$1
   local attribution=$2
@@ -66,7 +65,7 @@ quoth_the_bard () {
   echo "$PURPLE$attribution$RESET"
 }
 
-fie () {
+function fie () {
   # upcase the message
   local message=$(echo $1 | tr 'a-z' 'A-Z')
   echo ""
@@ -74,7 +73,7 @@ fie () {
   exit
 }
 
-figlet_announces () {
+function figlet_announces () {
   local act=$1
   figlet -f ogre $act
 }

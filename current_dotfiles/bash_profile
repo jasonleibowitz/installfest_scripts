@@ -42,7 +42,8 @@
 # --------------------
 # 11. Shortcuts
 # 12. Source Files
-# 13. Reserved
+# 13. Environmental Variables and API Keys
+# 14. Reserved
 
 
 # SYSTEM SETTINGS
@@ -226,8 +227,9 @@ alias rogue='lsof -i TCP:3000'
 # Application Aliases
 # ================
 alias subl='open -a "Sublime Text"'
-alias mou="open /Applications/Mou.app"
-alias hipchat="open /Applications/HipChat.app"
+alias mou='open -a "Mou"'
+alias hipchat='open -a "HipChat"'
+alias chrome='open -a "Google Chrome"'
 
 # ================
 # Sublime
@@ -350,3 +352,6 @@ fi
 # commands. Attempt to reserve this area for their use!
 ##########################################################################
 
+# ====================================
+# Environmental Variables and API Keys
+# ====================================
