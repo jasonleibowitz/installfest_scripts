@@ -23,13 +23,14 @@ class GithubNotifier
     new_issue = {
       "assignee" => homework,
       "body"     => "",
-      "labels"   => [ "absence"],
+      "labels"   => [ "absence" ],
       "title"    => message
     }
     client.issues.create(new_issue)
   end
 
   def password
+
     print "Github Password: "
     STDIN.noecho(&:gets).chomp
   end

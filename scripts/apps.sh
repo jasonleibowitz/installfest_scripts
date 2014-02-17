@@ -19,7 +19,8 @@ install_dmg () {
   echo 'Hark, a dmg!'
   file_name="$1"
   MOUNTPOINT="/Volumes/MountPoint"
-  # IFS=""
+  IFS="
+  "
   hdiutil attach -mountpoint $MOUNTPOINT "$file_name.dmg"
   app=$(find $MOUNTPOINT 2>/dev/null -maxdepth 2 -iname \*.app)
   if [ ! -z "$app" ]; then
