@@ -65,14 +65,15 @@ function quoth_the_bard () {
   echo "$PURPLE$attribution$RESET"
 }
 
+# upcase error message and exit script
 function fie () {
-  # upcase the message
   local message=$(echo $1 | tr 'a-z' 'A-Z')
   echo ""
   echo "$RED$message$RESET"
   exit
 }
 
+# announce our acts
 function figlet_announces () {
   local act=$1
   figlet -f ogre $act

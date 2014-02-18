@@ -1,8 +1,10 @@
 {
   "installed_packages":
   [
-    "SublimeCodeIntel",
+    // "SublimeCodeIntel",
     "Package Control",
+    "GitGutter",
+    "Gem Browser",
     "SublimeLinter",
     "ColorPicker",
     "Dotfiles Syntax Highlighting",
