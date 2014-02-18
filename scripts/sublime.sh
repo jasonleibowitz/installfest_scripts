@@ -1,6 +1,6 @@
 echo "Installing settings for Sublime Text $subl_vers"
 
-if [ "$subl_vers" == "2" ]; then
+if [ "$SUBL_VERS" == "2" ]; then
   subl_settings="${HOME}/Library/Application Support/Sublime Text 2"
   # Symlink Sublime Text 2
   ln -s "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl

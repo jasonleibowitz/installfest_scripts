@@ -87,7 +87,7 @@ SRC_DIR=~/.wdi-installfest
 SCRIPTS=$SRC_DIR/scripts
 SETTINGS=$SRC_DIR/settings
 INSTALL_REPO=https://github.com/phlco/installfest_scripts.git
-
+SUBL_VERS=2
 # Determine OS version ################################################################
 
 osx_version=$(sw_vers -productVersion)
