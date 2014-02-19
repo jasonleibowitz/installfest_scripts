@@ -6,7 +6,7 @@
 #                         |_|
 # When Bash starts, it executes the commands in this script
 # http://en.wikipedia.org/wiki/Bash_(Unix_shell)
-# 
+#
 # Written by Philip Lamplugh, Instructor General Assembly (2013)
 #   Updated by PJ Hughes, Instructor General Assembly (2013)
 
@@ -226,7 +226,11 @@ alias rogue='lsof -i TCP:3000'
 # ================
 # Application Aliases
 # ================
-alias subl='open -a "Sublime Text"'
+
+# Sublime should be symlinked. Otherwise use one of these
+# alias subl='open -a "Sublime Text"'
+# alias subl='open -a "Sublime Text 2"'
+
 alias mou='open -a "Mou"'
 alias hipchat='open -a "HipChat"'
 alias chrome='open -a "Google Chrome"'

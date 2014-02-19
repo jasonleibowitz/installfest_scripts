@@ -106,7 +106,7 @@ defaults write com.apple.systemuiserver menuExtras -array \
   "/System/Library/CoreServices/Menu Extras/Battery.menu" \
   "/System/Library/CoreServices/Menu Extras/User.menu"
 
-for app in "SystemUIServer" "cfprefsd" "Finder" "Terminal" \
+for app in "SystemUIServer" "cfprefsd" "Finder" \
   "Sublime Text" "Mou" "HipChat" "Google Chrome" "Spectacle"; do
   killall "${app}" > /dev/null 2>&1
 done
