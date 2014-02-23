@@ -6,7 +6,7 @@ pbcopy < ~/.ssh/id_rsa.pub
 echo "We just copied your SSH key to the clipboard."
 echo "Now we're going to visit GitHub to add the SSH key"
 
-pause "Press Enter for Instructions for GitHub"
+pause_awhile "Press Enter for Instructions for GitHub"
 
 echo 'Click "SSH Keys" in the left sidebar'
 echo 'Click "Add SSH key"'
@@ -15,9 +15,9 @@ echo 'Click "Add key"'
 echo 'Confirm the action by entering your GitHub password'
 
 echo "Press Enter to open GitHub in the browser."
-pause "We'll be here until you get back."
+pause_awhile "We'll be here until you get back."
 
 open https://github.com/settings/ssh
 
-pause "Ok. Ready?"
+pause_awhile "Ok. Ready?"
 # Fin

@@ -144,7 +144,7 @@ fi
 clear
 
 echo "Welcome to Installfest"
-pause "Press Enter to continue"
+pause_awhile "Press Enter to continue"
 # TODO: What does this script do
 # This script requires running as an admin.
 # We'll need your computer password for that.
