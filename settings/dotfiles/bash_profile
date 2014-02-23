@@ -253,7 +253,7 @@ export EDITOR="subl -w"
 # Undo a git push
 alias undopush="git push -f origin HEAD^:master"
 # undo a commit
-alias uncommit="git reset --soft HEAD^"
+alias undocommit="git reset --soft HEAD^"
 # -----------------
 # For the prompt
 # -----------------
@@ -326,7 +326,7 @@ eval "$(rbenv init -)"
 # Students can add a shortcut to quickly access their GA folder
 # example: alias wdi="cd ~/Documents/GA/WDI4"
 # TODO: Set these
-class_repo = ""
+export class_repo = ""
 alias wdi="cd ~/dev/wdi/"
 
 cdhwfunc() {
@@ -348,14 +348,14 @@ alias cdhw=cdhwfunc
 # An extra file where you can create other settings, such as your
 # application usernames or API keys...
 if [ -f ~/.bash_settings ]; then
-    source ~/.bash_settings
+  source ~/.bash_settings
 fi
 # An extra file where you can create other settings for your prompt.
 if [ -f ~/.bash_prompt ]; then
   source ~/.bash_prompt
 fi
 # A welcome prompt with stats for sanity checks
-if [ -f ~/.welcome_prompt]; then
+if [ -f ~/.welcome_prompt ]; then
   source ~/.welcome_prompt
 fi
 
