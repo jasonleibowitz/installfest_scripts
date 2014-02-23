@@ -54,6 +54,9 @@ brew install libyaml #........... a YAML 1.1 parser and emitter
 # brew install serf #.............. a high performance C-based HTTP client library
 # brew install sqlite #............ a self-contained, serverless, zero-configuration, transactional SQL database engine.
 # brew install ssh-copy-id #....... a script that uses ssh to log into a remote machine
+brew install libxml2 #........... XML C parser and toolkit
+brew install libxslt #........... a language for transforming XML documents into other XML documents.
+brew install libiconv #.......... a conversion library between Unicode and traditional encoding
 
 #  Tap a new formula repository from GitHub, or list existing taps.
 brew tap homebrew/versions

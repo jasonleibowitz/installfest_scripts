@@ -12,5 +12,5 @@ gem install sinatra         # a DSL for quickly creating web applications in Rub
 gem install sinatra-contrib # common Sinatra extensions
 gem install hipchat         # HipChat HTTP API Wrapper
 gem install rainbow         # colorizing printed text on ANSI terminals
-gem install github          # Ruby interface to github API v3
+gem install github_api          # Ruby interface to github API v3
 # fin #

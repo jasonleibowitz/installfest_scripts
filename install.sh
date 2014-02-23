@@ -154,10 +154,13 @@ read -p "Github Email: "          github_email
 #######################################################################################
 
 # Let's make sure we're updated #######################################################
+# and in control of the home folder
+sudo chown -R ${USER} ~
 diskutil repairPermissions /
 echo "Checking for recommended software updates."
 echo "This may require a restart."
 sudo softwareupdate -i -r --ignore iTunes
+sudo chown -R ${USER} ~
 #######################################################################################
 
 quoth_the_bard "The play's the thing..."

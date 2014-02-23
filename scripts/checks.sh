@@ -51,7 +51,9 @@ nay () {
 what_news_of () {
   app_name=$1
   echo -n "What news of $app_name? "
-  if [ -x "/Applications/$app_name.app" ]; then
+  # This could also work
+  # if ls /path/to/your/files* &> /dev/null;
+  if [ -x /Applications/"$app_name".app ]; then
     aye "Good"
   else
     nay "Alack!"
@@ -80,9 +82,10 @@ is_not_this () {
 
 echo "Running some checks on how our Install went"
 
-is_not_this "brew doctor"     "ready to brew."
-is_not_this "ruby -v"         "2.1.0"
-is_not_this "gem list pry -i" "true"
+is_not_this "brew doctor"           "ready to brew."
+is_not_this "ruby -v"               "2.1.0"
+is_not_this "gem list pry -i"       "true"
+is_not_this "ssh -T git@github.com" "successfully authenticated"
 
 # When you type `subl` into your terminal, it opens up Sublime Text
 if [ ! -L /usr/local/bin/subl ]; then
@@ -102,6 +105,7 @@ dost_thou_have ~/dev/wdi
 # Applications
 what_news_of "Spectacle"
 what_news_of "Sublime Text"
+what_news_of "Sublime Text 2"
 what_news_of "HipChat"
 what_news_of "Google Chrome"
 what_news_of "Mou"
