@@ -1,15 +1,15 @@
 # # Disable the “Are you sure you want to open this application?” dialog
-# defaults write com.apple.LaunchServices LSQuarantine -bool false
+defaults write com.apple.LaunchServices LSQuarantine -bool false
 
 # # Reveal IP address, hostname, OS version, etc. when clicking the clock
 # # in the login window
 # sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
 
 # # Disable the warning when changing a file extension
-# defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
 # # Only use UTF-8 in Terminal.app
-# defaults write com.apple.terminal StringEncodings -array 4
+defaults write com.apple.terminal StringEncodings -array 4
 
 # # Use a modified version of the Pro theme by default in Terminal.app
 # open "${HOME}/init/Mathias.terminal"
@@ -39,6 +39,3 @@ allow_control() {
 }
 
 allow_control Spectacle
-
-# also look into brew cask for installing applications
-# https://github.com/Homebrew/homebrew/wiki/External-Commands

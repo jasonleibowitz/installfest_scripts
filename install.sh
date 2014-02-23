@@ -342,6 +342,7 @@ quoth_the_bard \
 "--Macbeth (IV.i)"
 
 # EPILOGUE
+source $SCRIPTS/osx.sh
 source $SCRIPTS/github.sh
 
 echo "You may want to run brew doctor to ensure everything is working."
