@@ -99,19 +99,5 @@ fi
 defaults write com.hipchat.hipchat disableSounds -bool true
 defaults write com.hipchat.hipchat notificationVolume -float 20
 
-# To thine own self be true
-# Display username in menu bar PL: This doesn't work.
-# defaults write com.apple.systemuiserver menuExtras -array \
-#   "/System/Library/CoreServices/Menu Extras/Volume.menu"  \
-#   "/System/Library/CoreServices/Menu Extras/Battery.menu" \
-#   "/System/Library/CoreServices/Menu Extras/Clock.menu"   \
-#   "/System/Library/CoreServices/Menu Extras/User.menu"
-
-
-# for app in "SystemUIServer" "cfprefsd" "Finder" \
-#   "Sublime Text" "Mou" "HipChat" "Google Chrome" "Spectacle"; do
-#   killall "${app}" > /dev/null 2>&1
-# done
-
 ## - FIN - ##
 
