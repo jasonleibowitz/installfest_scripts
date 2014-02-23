@@ -79,6 +79,10 @@ function figlet_announces () {
   figlet -f ogre $act
 }
 
+function pause_awhile(){
+   read -p "$*"
+}
+
 #-------------------------------------------------------------------------------
 MINIMUM_OS="10.7.0"
 BELOVED_RUBY_VERSION="2.1.0"
@@ -140,6 +144,7 @@ fi
 clear
 
 echo "Welcome to Installfest"
+pause "Press Enter to continue"
 # TODO: What does this script do
 # This script requires running as an admin.
 # We'll need your computer password for that.
@@ -337,6 +342,8 @@ quoth_the_bard \
 "--Macbeth (IV.i)"
 
 # EPILOGUE
+source $SCRIPTS/github.sh
+
 echo "You may want to run brew doctor to ensure everything is working."
 echo "Next make sure your SSH keys are setup."
 echo "Follow the instructions here:"
