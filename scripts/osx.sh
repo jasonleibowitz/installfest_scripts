@@ -17,11 +17,22 @@ defaults write com.apple.terminal StringEncodings -array 4
 # defaults write com.apple.terminal "Default Window Settings" -string "Mathias"
 # defaults write com.apple.terminal "Startup Window Settings" -string "Mathias"
 
-# # Install Sublime Text settings
-# cp -r init/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text*/Packages/User/Preferences.sublime-settings 2> /dev/null
+# # To thine own self be true
+# # Display username in menu bar PL: This doesn't work.
+# defaults write com.apple.systemuiserver menuExtras -array \
+#   "/System/Library/CoreServices/Menu Extras/Volume.menu"  \
+#   "/System/Library/CoreServices/Menu Extras/Battery.menu" \
+#   "/System/Library/CoreServices/Menu Extras/Clock.menu"   \
+#   "/System/Library/CoreServices/Menu Extras/User.menu"
 
-# spectacle
-# http://support.apple.com/kb/HT5914
+
+# for app in "SystemUIServer" "cfprefsd" "Finder" \
+#   "Sublime Text" "Mou" "HipChat" "Google Chrome" "Spectacle"; do
+#   killall "${app}" > /dev/null 2>&1
+# done
+
+# # spectacle
+# # http://support.apple.com/kb/HT5914
 # codesign -s - --resource-rules=/Users/YourUserNameHere/ResourceRules-ignoring-Scripts.plist /path/to/applet.app
 
 # https://github.com/chytreg/dotfiles/blob/c532970fb63a78b2507141b4de26b3c8e25c2bfc/bin/bootstrap
