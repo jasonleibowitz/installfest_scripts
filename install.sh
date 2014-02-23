@@ -140,12 +140,17 @@ fi
 clear
 
 echo "Welcome to Installfest"
-sudo echo "Thanks." # PJ: capture the user's password
+# TODO: What does this script do
+# This script requires running as an admin.
+# We'll need your computer password for that.
+sudo echo "Thanks!"
 
 # Start install fest ###################################################################
 # Keep-alive: update existing `sudo` time stamp until script has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
+# First we're going to collect some information to configure your computer to
+# work with github
 echo "Please register for an account on github.com if you haven't already done so."
 
 read -p "Enter your full name: "  user_name
@@ -155,7 +160,10 @@ read -p "Github Email: "          github_email
 
 # Let's make sure we're updated #######################################################
 # and in control of the home folder
+echo "Next we're going to ensure you have admin access for everything in your home folder and then repair your disk permissions"
+echo "This may take awhile..."
 sudo chown -R ${USER} ~
+
 diskutil repairPermissions /
 echo "Checking for recommended software updates."
 echo "This may require a restart."
