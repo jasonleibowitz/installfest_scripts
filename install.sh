@@ -82,7 +82,7 @@ function figlet_announces () {
 function pause_awhile () {
    read -p "$* Press Enter to continue"
 }
- 
+
 #-------------------------------------------------------------------------------
 MINIMUM_OS="10.7.0"
 BELOVED_RUBY_VERSION="2.1.0"
@@ -159,6 +159,8 @@ read -p "Github Email: "          github_email
 
 # Let's make sure we're updated #######################################################
 # and in control of the home folder
+echo "Let's ensure you have full control over your user folder"
+echo "This may take awhile"
 sudo chown -R ${USER} ~
 diskutil repairPermissions /
 echo "Checking for recommended software updates."

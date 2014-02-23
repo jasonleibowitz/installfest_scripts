@@ -173,13 +173,13 @@ fi
 # Print Stats on terminal load
 # ---------------------
 function welcome() {
-  sed -i.bak s/welcome_prompt=false/welcome_prompt=true/g ~/.bash_settings
+  sed -i.bak s/welcome_prompt=false/welcome_prompt=true/g ~/.welcome_prompt
   echo "Message returned."
 }
 
 # Show/Hide stats on terminal load
 function unwelcome() {
-  sed -i.bak s/welcome_prompt=true/welcome_prompt=false/g ~/.bash_settings
+  sed -i.bak s/welcome_prompt=true/welcome_prompt=false/g ~/.welcome_prompt
   echo "Message removed. Type ${BOLD}welcome${RESET} to return the message."
 }
 
@@ -326,7 +326,7 @@ eval "$(rbenv init -)"
 # Students can add a shortcut to quickly access their GA folder
 # example: alias wdi="cd ~/Documents/GA/WDI4"
 # TODO: Set these
-export class_repo = ""
+export class_repo=""
 alias wdi="cd ~/dev/wdi/"
 
 cdhwfunc() {
