@@ -172,16 +172,19 @@ fi
 # ---------------------
 # Print Stats on terminal load
 # ---------------------
-# GA General Assembly Webdevelopment Immersive
-echo ${BG_RED}${WHITE}GA${RESET}${WHITE}${BG_BLACK} General Assembly ${RESET}${BG_YELLOW}${BLACK} Web Development Immersive ${RESET}
-echo "------------------------------------------"
-echo $(ruby -v)
-echo $(rails -v)
-echo $(git --version)
-echo $(heroku --version)
-echo $(psql --version)
-echo $(brew -v)
-echo "------------------------------------------"
+source ~/.welcome_prompt
+
+function welcome() {
+  sed -i.bak s/welcome_prompt=false/welcome_prompt=true/g ~/.bash_settings
+  echo "Message returned."
+}
+
+# Show/Hide stats on terminal load
+function unwelcome() {
+  sed -i.bak s/welcome_prompt=true/welcome_prompt=false/g ~/.bash_settings
+  echo "Message removed. Type ${BOLD}welcome${RESET} to return the message."
+}
+
 # ---------------------
 # style the prompt
 # ---------------------

@@ -1,0 +1,21 @@
+#-------------------------------------------------------------------------------
+# Welcome Prompt
+# prints stats on terminal load
+#-------------------------------------------------------------------------------
+welcome_prompt=false
+
+function welcome_msg() {
+  # GA General Assembly Webdevelopment Immersive
+  echo ${BG_RED}${WHITE}GA${RESET}${WHITE}${BG_BLACK} General Assembly ${RESET}${BG_YELLOW}${BLACK} Web Development Immersive ${RESET}
+  echo "------------------------------------------"
+  echo $(git --version)
+  echo $(brew -v)
+  echo $(ruby -v)
+  echo $(psql --version)
+  echo $(rails -v)
+  echo $(heroku --version)
+  echo "------------------------------------------"
+  echo "type ${BOLD}unwelcome${RESET} to remove this message"
+}
+
+if [ $welcome_prompt == true ]; then welcome_msg; fi

@@ -16,13 +16,14 @@ beget () {
 }
 
 # Useful settings
-beget bash_profile  # personal initialization file, executed for login shells
-beget bash_settings # store additional settings like API keys
-beget bashrc        # individual per-interactive-shell startup file
-beget editorconfig  # plugin for maintaining consistent coding styles between different editors
-beget gemrc         # gem configuration
-beget inputrc       # deals with the mapping of the keyboard
-beget pryrc         # pry configuration
+beget bash_profile   # personal initialization file, executed for login shells
+beget bash_settings  # store additional settings like API keys
+beget welcome_prompt # wdi_welcome prompt and system settings sanity check
+beget bashrc         # individual per-interactive-shell startup file
+beget editorconfig   # plugin for maintaining consistent coding styles between different editors
+beget gemrc          # gem configuration
+beget inputrc        # deals with the mapping of the keyboard
+beget pryrc          # pry configuration
 
 # reload terminal
 source ~/.bash_profile

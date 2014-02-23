@@ -57,7 +57,6 @@ RESET=$(tput sgr0)
 #-------------------------------------------------------------------------------
 # ABRB
 function quoth_the_bard () {
-  clear
   local message=$1
   local attribution=$2
   echo ""
@@ -75,14 +74,15 @@ function fie () {
 
 # announce our acts
 function figlet_announces () {
+  clear
   local act=$1
   figlet -f ogre $act
 }
 
-function pause_awhile(){
-   read -p "$*"
+function pause_awhile () {
+   read -p "$* Press Enter to continue"
 }
-
+ 
 #-------------------------------------------------------------------------------
 MINIMUM_OS="10.7.0"
 BELOVED_RUBY_VERSION="2.1.0"
@@ -144,18 +144,12 @@ fi
 clear
 
 echo "Welcome to Installfest"
-pause_awhile "Press Enter to continue"
-# TODO: What does this script do
-# This script requires running as an admin.
-# We'll need your computer password for that.
-sudo echo "Thanks!"
+sudo echo "Thanks." # PJ: capture the user's password
 
 # Start install fest ###################################################################
 # Keep-alive: update existing `sudo` time stamp until script has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-# First we're going to collect some information to configure your computer to
-# work with github
 echo "Please register for an account on github.com if you haven't already done so."
 
 read -p "Enter your full name: "  user_name
@@ -165,10 +159,7 @@ read -p "Github Email: "          github_email
 
 # Let's make sure we're updated #######################################################
 # and in control of the home folder
-echo "Next we're going to ensure you have admin access for everything in your home folder and then repair your disk permissions"
-echo "This may take awhile..."
 sudo chown -R ${USER} ~
-
 diskutil repairPermissions /
 echo "Checking for recommended software updates."
 echo "This may require a restart."
@@ -195,6 +186,7 @@ fi
 #######################################################################################
 
 # Ensure Macports and RVM aren't installed ############################################
+clear
 echo "            _     _                                     _ "
 echo "  __ _  ___| |_  / |          ___  ___ ___ _ __   ___  / |"
 echo " / _' |/ __| __| | |  _____  / __|/ __/ _ \ '_ \ / _ \ | |"
@@ -206,10 +198,12 @@ quoth_the_bard \
 "Woe, destruction, ruin, and decay\; the worst is death and death will have his day." \
 "--Richard II (III.ii)"
 
+pause_awhile "Removing any previous installations of RVM and Macports."
 source $SCRIPTS/clean.sh
 ######################################################################################
 
 # Install homebrew and formulae ######################################################
+clear
 echo "            _     _                                     ____  "
 echo "  __ _  ___| |_  / |          ___  ___ ___ _ __   ___  |___ \ "
 echo " / _' |/ __| __| | |  _____  / __|/ __/ _ \ '_ \ / _ \   __) |"
@@ -228,6 +222,7 @@ Boy: Would I were in an alehouse in London! I would give
 all my fame for a pot of ale and safety." \
 "--Henry V (III.ii)"
 
+pause_awhile "Installing our Package Manager HomeBrew"
 source $SCRIPTS/brew.sh
 ######################################################################################
 
@@ -246,6 +241,7 @@ Like a bright exhalation in the evening,
 And no man see me more." \
 "--Henry VIII (III.ii)"
 
+pause_awhile "Config settings for terminal"
 source $SCRIPTS/settings.sh # PL: someday maybe these are kept in a hidden folder?
 #######################################################################################
 
@@ -256,6 +252,7 @@ quoth_the_bard \
 "Once more the ruby-colour'd portal open'd," \
 "--Venus and Adonis (1593)"
 
+pause_awhile "Setting up RBENV our Ruby Version Manager"
 source $SCRIPTS/rbenv.sh
 #######################################################################################
 
@@ -270,6 +267,7 @@ PRINCESS OF FRANCE: I think no less. Dost thou not wish in heart
 The chain were longer and the letter short?" \
 "--Love's Labour Lost (V.ii)"
 
+pause_awhile "Setting up Git for Version Control"
 source $SCRIPTS/git.sh
 #######################################################################################
 
@@ -281,6 +279,7 @@ quoth_the_bard \
 With several applications..." \
 "--All's Well That Ends Well (I.ii)"
 
+pause_awhile "Installing applications for development"
 source $SCRIPTS/apps.sh
 #######################################################################################
 
@@ -292,6 +291,7 @@ quoth_the_bard \
 with this special observance that you o'erstep not the modesty of nature." \
 "--Hamlet (III.ii)"
 
+pause_awhile "Configuring Sublime and Terminal"
 source $SCRIPTS/sublime.sh
 source $SCRIPTS/terminal.sh # solarize terminal colors
 #######################################################################################
@@ -310,6 +310,7 @@ With April's first-born flowers, and all things rare
 That heaven's air in this huge rondure hems." \
 "--Sonnet 21"
 
+pause_awhile "Installing system gems"
 source $SCRIPTS/gems.sh
 #######################################################################################
 
@@ -320,6 +321,7 @@ quoth_the_bard \
 "'Tis in my memory lock'd, And you yourself shall keep the key of it." \
 "--Hamlet (I.iii)"
 
+pause_awhile "Configuring Postgres"
 source $SCRIPTS/postgres.sh
 #######################################################################################
 
@@ -331,6 +333,7 @@ quoth_the_bard \
 Or close the wall up with our English dead." \
 "--Henry V (III.i)"
 
+pause_awhile "Let's run some checks to see how the install went"
 source ~/.bash_profile
 #######################################################################################
 
@@ -342,12 +345,9 @@ quoth_the_bard \
 "--Macbeth (IV.i)"
 
 # EPILOGUE
-source $SCRIPTS/osx.sh
+echo "You may want to run brew doctor to ensure everything is working."
+echo "Next we'll sure your SSH keys are setup."
 source $SCRIPTS/github.sh
 
-echo "You may want to run brew doctor to ensure everything is working."
-echo "Next make sure your SSH keys are setup."
-echo "Follow the instructions here:"
-echo "https://help.github.com/articles/generating-ssh-keys"
-
 # - fin - #
+welcome

@@ -7,8 +7,8 @@
 # When Bash starts, it executes the commands in this script
 # http://en.wikipedia.org/wiki/Bash_(Unix_shell)
 #
-# Written by Phil Lamplugh, Instructor General Assembly (2013)
-# Updated by PJ Hughes, Instructor General Assembly (2013)
+# Written by Philip Lamplugh, Instructor General Assembly (2013)
+#   Updated by PJ Hughes, Instructor General Assembly (2013)
 
 # =====================
 # Resources
@@ -24,7 +24,6 @@
 # --------------------
 # System Settings
 # --------------------
-#  0. rbenv
 #  1. Path List
 #  2. File Navigation
 #  3. History
@@ -37,30 +36,34 @@
 #  7. Sublime
 #  8. Git
 #  9. Rails
+# 10. rbenv
 # --------------------
 # Other Settings
 # --------------------
-# 10. Shortcuts
-# 11. Source Files
-# 12. Reserved
+# 11. Shortcuts
+# 12. Source Files
+# 13. Environmental Variables and API Keys
+# 14. Reserved
+
 
 # SYSTEM SETTINGS
 ##########################################################################
-
-# =================
-# rbenv
-# our Ruby environment and version manager
-# =================
-# start rbenv on open
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # ==================
 # Path
 # This is a list of all directories in which to look for commands, scripts and programs
 # ==================
 
+# Load RVM into a shell session *as a function*
+#[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # PJ: using rbenv now...
+# Add RVM to PATH for scripting
+# PATH=$PATH:$HOME/.rvm/bin # PJ: using rbenv now...
 # Home brew directories
 PATH="/usr/local/bin:$PATH"
+# Node Package Manager
+PATH="/usr/local/share/npm/bin:$PATH"
+# Make sure we're pointing to the Postgres App's psql
+# PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH" # PJ: off
 # Heroku Toolbelt
 PATH="/usr/local/heroku/bin:$PATH"
 
@@ -71,20 +74,21 @@ PATH="/usr/local/heroku/bin:$PATH"
 alias ls='ls -F'
 # long list format including hidden files
 alias ll='ls -la'
-# Shortcuts
-alias dl='cd ~/Downloads'
-alias doc='cd ~/Documents'
-alias dsk='cd ~/Desktop'
 # Adds colors to LS
 export CLICOLOR=1
 # http://geoff.greer.fm/lscolors/
 # Describes what color to use for which attribute (files, folders etc.)
-export LSCOLORS=exfxcxdxbxexexabagacad
+export LSCOLORS=faexcxdxbxegedabagacad # PJ: turned off
 # go back one directory
 alias b='cd ..'
 # If we make a change to our bash profile we need to reload it
 alias reload="clear; source ~/.bash_profile"
-
+## Tab improvements
+## Might not need?
+bind 'set completion-ignore-case on'
+# make completions appear immediately after pressing TAB once
+bind 'set show-all-if-ambiguous on'
+bind 'TAB: menu-complete'
 # Prefer US English
 export LC_ALL="en_US.UTF-8"
 # use UTF-8
@@ -92,8 +96,8 @@ export LANG="en_US"
 
 # =================
 # History
-# lists your previously entered commands
 # =================
+# History lists your previously entered commands
 alias h='history'
 # http://jorge.fbarr.net/2011/03/24/making-your-bash-history-more-efficient/
 # Larger bash history (allow 32³ entries; default is 500)
@@ -131,6 +135,7 @@ if tput setaf 1 &> /dev/null; then
     CYAN=$(tput setaf 6)
     WHITE=$(tput setaf 7)
     ORANGE=$(tput setaf 172)
+    # GREEN=$(tput setaf 190)
     PURPLE=$(tput setaf 141)
     BG_BLACK=$(tput setab 0)
     BG_RED=$(tput setab 1)
@@ -167,16 +172,17 @@ fi
 # ---------------------
 # Print Stats on terminal load
 # ---------------------
-# GA General Assembly Webdevelopment Immersive
-echo ${BG_RED}${WHITE}GA${RESET}${WHITE}${BG_BLACK} General Assembly ${RESET}${BG_YELLOW}${BLACK} Web Development Immersive ${RESET}
-echo "------------------------------------------"
-echo $(ruby -v)
-echo $(rails -v)
-echo $(git --version)
-echo $(heroku --version)
-echo $(psql --version)
-echo $(brew -v)
-echo "------------------------------------------"
+function welcome() {
+  sed -i.bak s/welcome_prompt=false/welcome_prompt=true/g ~/.bash_settings
+  echo "Message returned."
+}
+
+# Show/Hide stats on terminal load
+function unwelcome() {
+  sed -i.bak s/welcome_prompt=true/welcome_prompt=false/g ~/.bash_settings
+  echo "Message removed. Type ${BOLD}welcome${RESET} to return the message."
+}
+
 # ---------------------
 # style the prompt
 # ---------------------
@@ -188,23 +194,21 @@ style_branch="${RED}"
 # Build the prompt
 # ---------------------
 # Example with committed changes: username ~/documents/GA/wdi on master[+]
-PS1="${style_user}\u"                 # Username
-PS1+="${style_path} \w"               # Working directory
-PS1+="\$(prompt_git)"                 # Git details
-PS1+="\n"                             # Newline
-PS1+="${style_chars}\$ \[${RESET}\]"  # $ (and reset color)
+PS1="${style_user}\u"                    # Username
+PS1+="${style_path} \w"                  # Working directory
+PS1+="\$(prompt_git)"                    # Git details
+PS1+="\n"                                # Newline
+PS1+="${style_chars}\$ \[${RESET}\]"     # $ (and reset color)
 
 # =================
 # Other System Settings
 # =================
-
 # Hide/show all desktop icons (useful when presenting)
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 # Hide/show hidden files in Finder
 alias hidefiles="defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder"
 alias showfiles="defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder"
-
 # Start an HTTP server from a directory, optionally specifying the port
 function server() {
   local port="${1:-8000}"
@@ -213,7 +217,6 @@ function server() {
   # And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
   python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port"
 }
-
 # List any open internet sockets on port 3000. Useful if a rogue server is running
 # http://www.akadia.com/services/lsof_intro.html
 alias rogue='lsof -i TCP:3000'
@@ -224,10 +227,14 @@ alias rogue='lsof -i TCP:3000'
 # ================
 # Application Aliases
 # ================
-# alias subl='open -a "Sublime Text 2"' # for Sublime Text 2
-alias subl='open -a "Sublime Text"'     # for Sublime Text 3
-alias mou="open /Applications/Mou.app"
-alias hipchat="open /Applications/HipChat.app"
+
+# Sublime should be symlinked. Otherwise use one of these
+# alias subl='open -a "Sublime Text"'
+# alias subl='open -a "Sublime Text 2"'
+
+alias mou='open -a "Mou"'
+alias hipchat='open -a "HipChat"'
+alias chrome='open -a "Google Chrome"'
 
 # ================
 # Sublime
@@ -242,7 +249,7 @@ export EDITOR="subl -w"
 # Aliases
 # -----------------
 # Alias for hub http://hub.github.com/
-alias git='hub'
+# alias git='hub'
 # Undo a git push
 alias undopush="git push -f origin HEAD^:master"
 # undo a commit
@@ -252,50 +259,50 @@ alias uncommit="git reset --soft HEAD^"
 # -----------------
 # Long git to show + ? !
 is_git_repo() {
-  $(git rev-parse --is-inside-work-tree &> /dev/null)
+    $(git rev-parse --is-inside-work-tree &> /dev/null)
 }
 is_git_dir() {
-  $(git rev-parse --is-inside-git-dir 2> /dev/null)
+    $(git rev-parse --is-inside-git-dir 2> /dev/null)
 }
 get_git_branch() {
-  local branch_name
-  # Get the short symbolic ref
-  branch_name=$(git symbolic-ref --quiet --short HEAD 2> /dev/null) ||
-  # If HEAD isn't a symbolic ref, get the short SHA
-  branch_name=$(git rev-parse --short HEAD 2> /dev/null) ||
-  # Otherwise, just give up
-  branch_name="(unknown)"
-  printf $branch_name
+    local branch_name
+    # Get the short symbolic ref
+    branch_name=$(git symbolic-ref --quiet --short HEAD 2> /dev/null) ||
+    # If HEAD isn't a symbolic ref, get the short SHA
+    branch_name=$(git rev-parse --short HEAD 2> /dev/null) ||
+    # Otherwise, just give up
+    branch_name="(unknown)"
+    printf $branch_name
 }
 # Git status information
 prompt_git() {
-  local git_info git_state uc us ut st
-  if ! is_git_repo || is_git_dir; then
-      return 1
-  fi
-  git_info=$(get_git_branch)
-  # Check for uncommitted changes in the index
-  if ! $(git diff --quiet --ignore-submodules --cached); then
-      uc="+"
-  fi
-  # Check for unstaged changes
-  if ! $(git diff-files --quiet --ignore-submodules --); then
-      us="!"
-  fi
-  # Check for untracked files
-  if [ -n "$(git ls-files --others --exclude-standard)" ]; then
-      ut="${RED}?"
-  fi
-  # Check for stashed files
-  if $(git rev-parse --verify refs/stash &>/dev/null); then
-      st="$"
-  fi
-  git_state=$uc$us$ut$st
-  # Combine the branch name and state information
-  if [[ $git_state ]]; then
-      git_info="$git_info${RESET}[$git_state${RESET}]"
-  fi
-  printf "${WHITE} on ${style_branch}${git_info}"
+    local git_info git_state uc us ut st
+    if ! is_git_repo || is_git_dir; then
+        return 1
+    fi
+    git_info=$(get_git_branch)
+    # Check for uncommitted changes in the index
+    if ! $(git diff --quiet --ignore-submodules --cached); then
+        uc="+"
+    fi
+    # Check for unstaged changes
+    if ! $(git diff-files --quiet --ignore-submodules --); then
+        us="!"
+    fi
+    # Check for untracked files
+    if [ -n "$(git ls-files --others --exclude-standard)" ]; then
+        ut="${RED}?"
+    fi
+    # Check for stashed files
+    if $(git rev-parse --verify refs/stash &>/dev/null); then
+        st="$"
+    fi
+    git_state=$uc$us$ut$st
+    # Combine the branch name and state information
+    if [[ $git_state ]]; then
+        git_info="$git_info${RESET}[$git_state${RESET}]"
+    fi
+    printf "${WHITE} on ${style_branch}${git_info}"
 }
 
 # =================
@@ -303,6 +310,12 @@ prompt_git() {
 # =================
 # Migrate Dev and Test databases and annotate models
 alias migrate='rake db:migrate; rake db:migrate RAILS_ENV=test; annotate'
+
+# =================
+# rbenv
+# =================
+# start rbenv (our Ruby environment and version manager) on open
+eval "$(rbenv init -)"
 
 # Other Settings
 ##########################################################################
@@ -312,26 +325,26 @@ alias migrate='rake db:migrate; rake db:migrate RAILS_ENV=test; annotate'
 # =================
 # Students can add a shortcut to quickly access their GA folder
 # example: alias wdi="cd ~/Documents/GA/WDI4"
+# TODO: Set these
+class_repo = ""
+alias wdi="cd ~/dev/wdi/"
 
-export wdi_class="WDI_NYC_12_Students"
-
-alias wdi="cd ~/dev/wdi/$wdi_class"
 cdhwfunc() {
-  # takes three args: the week, the day and an optional third for the user
+  # takes three args: the week, the day
+  # and an optional third for the user
   if [ $1 -lt 10 ]
   then
-    cd ~/dev/wdi/$wdi_class/w0$1/d0$2/${3:-Instructor}
+    cd ~/dev/wdi/$class_repo/w0$1/d0$2/${3:-Instructor}
   else
-    cd ~/dev/wdi/$wdi_class/w$1/d0$2/${3:-Instructor}
+    cd ~/dev/wdi/$class_repo/w$1/d0$2/${3:-Instructor}
   fi
 }
 alias cdhw=cdhwfunc
-# Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
-alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm update npm -g; npm update -g; sudo gem update --system; sudo gem update'
 
 # =================
 # Source Files
 # =================
+# .bash_settings and .bash_prompt should be added to .gitignore_global
 # An extra file where you can create other settings, such as your
 # application usernames or API keys...
 if [ -f ~/.bash_settings ]; then
@@ -341,7 +354,15 @@ fi
 if [ -f ~/.bash_prompt ]; then
   source ~/.bash_prompt
 fi
+# A welcome prompt with stats for sanity checks
+if [ -f ~/.welcome_prompt]; then
+  source ~/.welcome_prompt
+fi
 
 # Below here is an area for other commands added by outside programs or
 # commands. Attempt to reserve this area for their use!
 ##########################################################################
+
+# ====================================
+# Environmental Variables and API Keys
+# ====================================

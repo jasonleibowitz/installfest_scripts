@@ -2,9 +2,9 @@ WDI InstallFest Script
 
 A work in progress to automate the set up of a student's development machine.
 
-Run this script from the command line
+Paste this script into a Terminal prompt:
 
-```bash
+```
 bash <(curl -s https://raw.github.com/phlco/installfest_scripts/master/install.sh)
 ```
 
