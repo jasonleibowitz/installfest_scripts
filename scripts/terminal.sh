@@ -1,6 +1,7 @@
 ####################################################################################
 # Download and set Terminal colors to Solarized
 ####################################################################################
+# TODO: Make these open in the background
 echo "Settings Solarized Colors for Terminal..."
 open "$SETTINGS/dotfiles/Solarized Light.terminal"
 sleep 1

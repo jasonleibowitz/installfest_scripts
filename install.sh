@@ -295,7 +295,7 @@ with this special observance that you o'erstep not the modesty of nature." \
 
 pause_awhile "Configuring Sublime and Terminal"
 source $SCRIPTS/sublime.sh
-source $SCRIPTS/terminal.sh # solarize terminal colors
+source $SCRIPTS/terminal.sh & # solarize terminal colors
 #######################################################################################
 
 
@@ -331,6 +331,14 @@ source $SCRIPTS/postgres.sh
 figlet_announces "act 4 - scene 2"
 
 quoth_the_bard \
+"Double, double toil and trouble; Fire burn, and caldron bubble." \
+"--Macbeth (IV.i)"
+
+# EPILOGUE
+echo "Next we'll sure your SSH keys are setup."
+source $SCRIPTS/github.sh
+
+quoth_the_bard \
 "Once more unto the breach, dear friends, once more;
 Or close the wall up with our English dead." \
 "--Henry V (III.i)"
@@ -342,14 +350,9 @@ source ~/.bash_profile
 # checkpoints
 source $SCRIPTS/checks.sh
 
-quoth_the_bard \
-"Double, double toil and trouble; Fire burn, and caldron bubble." \
-"--Macbeth (IV.i)"
-
-# EPILOGUE
-echo "You may want to run brew doctor to ensure everything is working."
-echo "Next we'll sure your SSH keys are setup."
-source $SCRIPTS/github.sh
-
-# - fin - #
 welcome
+source ~/.bash_profile
+figlet_announces "fin"
+echo "We're done"
+echo "You may want to run brew doctor to ensure everything is working."
+# - fin - #
