@@ -8,7 +8,7 @@
 # http://en.wikipedia.org/wiki/Bash_(Unix_shell)
 #
 # Written by Philip Lamplugh, Instructor General Assembly (2013)
-#   Updated by PJ Hughes, Instructor General Assembly (2013)
+# Updated by PJ Hughes, Instructor General Assembly (2013)
 
 # =====================
 # Resources
@@ -85,10 +85,10 @@ alias b='cd ..'
 alias reload="clear; source ~/.bash_profile"
 ## Tab improvements
 ## Might not need?
-# bind 'set completion-ignore-case on'
+bind 'set completion-ignore-case on'
 # make completions appear immediately after pressing TAB once
-# bind 'set show-all-if-ambiguous on'
-# bind 'TAB: menu-complete'
+bind 'set show-all-if-ambiguous on'
+bind 'TAB: menu-complete'
 # Prefer US English
 export LC_ALL="en_US.UTF-8"
 # use UTF-8
@@ -172,8 +172,6 @@ fi
 # ---------------------
 # Print Stats on terminal load
 # ---------------------
-source ~/.welcome_prompt
-
 function welcome() {
   sed -i.bak s/welcome_prompt=false/welcome_prompt=true/g ~/.welcome_prompt
   echo "Message returned."
@@ -255,7 +253,7 @@ export EDITOR="subl -w"
 # Undo a git push
 alias undopush="git push -f origin HEAD^:master"
 # undo a commit
-alias uncommit="git reset --soft HEAD^"
+alias undocommit="git reset --soft HEAD^"
 # -----------------
 # For the prompt
 # -----------------
@@ -327,8 +325,10 @@ eval "$(rbenv init -)"
 # =================
 # Students can add a shortcut to quickly access their GA folder
 # example: alias wdi="cd ~/Documents/GA/WDI4"
+# TODO: Set these
 export class_repo=""
-alias wdi="cd ~/dev/wdi/$class_repo"
+alias wdi="cd ~/dev/wdi/"
+
 cdhwfunc() {
   # takes three args: the week, the day
   # and an optional third for the user
@@ -348,11 +348,15 @@ alias cdhw=cdhwfunc
 # An extra file where you can create other settings, such as your
 # application usernames or API keys...
 if [ -f ~/.bash_settings ]; then
-    source ~/.bash_settings
+  source ~/.bash_settings
 fi
 # An extra file where you can create other settings for your prompt.
 if [ -f ~/.bash_prompt ]; then
   source ~/.bash_prompt
+fi
+# A welcome prompt with stats for sanity checks
+if [ -f ~/.welcome_prompt ]; then
+  source ~/.welcome_prompt
 fi
 
 # Below here is an area for other commands added by outside programs or
