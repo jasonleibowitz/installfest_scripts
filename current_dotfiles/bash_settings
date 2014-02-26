@@ -1,9 +1,0 @@
-# Store additional settings here like API keys.
-
-# --------
-# Postgres
-# --------
-
-export PG_USERNAME=''
-export PG_PASSWORD=''
-

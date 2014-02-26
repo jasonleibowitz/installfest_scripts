@@ -74,6 +74,8 @@ PATH="/usr/local/heroku/bin:$PATH"
 alias ls='ls -F'
 # long list format including hidden files
 alias ll='ls -la'
+# prompt before removing!
+alias rm="rm -i"
 # Adds colors to LS
 export CLICOLOR=1
 # http://geoff.greer.fm/lscolors/
