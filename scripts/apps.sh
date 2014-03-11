@@ -5,6 +5,7 @@
 # Dramatis Personae
 
 # Google Chrome.........The Browser
+# Firefox...............A Browser
 # HipChat...............The Chat Client
 # Mou...................The Markdown Editor
 # Spectacle.............The Window Manager
@@ -84,6 +85,7 @@ echo "Friends, Romans, Countrymen..."
 ################################################################################
 
 lend_me_your "Google Chrome"  "https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg"
+lend_me_your "Firefox"        "https://download-installer.cdn.mozilla.net/pub/firefox/releases/27.0.1/mac/en-US/Firefox%2027.0.1.dmg"
 lend_me_your "HipChat"        "http://downloads.hipchat.com.s3.amazonaws.com/osx/HipChat-2.4.zip"
 lend_me_your "Mou"            "http://mouapp.com/download/Mou.zip"
 lend_me_your "Spectacle"      "https://s3.amazonaws.com/spectacle/downloads/Spectacle+0.8.4.zip"
