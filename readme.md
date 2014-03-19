@@ -4,8 +4,15 @@ A work in progress to automate the set up of a student's development machine.
 
 Paste this script into a Terminal prompt:
 
+##### For Mac OS:
+
 ```
-bash <(curl -s https://raw.github.com/phlco/installfest_scripts/master/install.sh)
+bash <(curl -s https://raw.github.com/ga-instuctors/installfest_scripts/mac_os/install.sh)
+```
+##### For Ubuntu Linux:
+
+```
+bash <(curl -s https://raw.github.com/ga-instuctors/installfest_scripts/ubuntu/install.sh)
 ```
 
 The repo is currently hidden, so use the below url with token.
