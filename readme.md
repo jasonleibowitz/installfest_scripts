@@ -7,12 +7,13 @@ Paste this script into a Terminal prompt:
 ##### For Mac OS:
 
 ```
-bash <(curl -s https://raw.github.com/ga-instuctors/installfest_scripts/mac_os/install.sh)
+bash <(curl -s https://raw.github.com/ga-instructors/installfest_script/mac_os/install.sh)
 ```
+
 ##### For Ubuntu Linux:
 
 ```
-bash <(curl -s https://raw.github.com/ga-instuctors/installfest_scripts/ubuntu/install.sh)
+bash <(curl -s https://raw.github.com/ga-instructors/installfest_script/ubuntu/install.sh)
 ```
 
 The repo is currently hidden, so use the below url with token.
