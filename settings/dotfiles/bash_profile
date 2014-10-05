@@ -9,6 +9,7 @@
 #
 # Written by Philip Lamplugh, Instructor General Assembly (2013)
 # Updated by PJ Hughes, Instructor General Assembly (2013)
+# Updated again by Jason Leibowitz, WDI Alum (2014)
 
 # =====================
 # Resources
@@ -200,7 +201,8 @@ PS1="${style_user}\u"                    # Username
 PS1+="${style_path} \w"                  # Working directory
 PS1+="\$(prompt_git)"                    # Git details
 PS1+="\n"                                # Newline
-PS1+="${style_chars}\$ \[${RESET}\]"     # $ (and reset color)
+PS1+="💾  \[${RESET}\]"                  # Emoticon (and reset color)
+# PS1+="${style_chars}\$ \[${RESET}\]"   # $ (and reset color)
 
 # =================
 # Other System Settings
@@ -235,8 +237,18 @@ alias rogue='lsof -i TCP:3000'
 # alias subl='open -a "Sublime Text 2"'
 
 alias mou='open -a "Mou"'
+aliad md='open -a "Macdown"'
 alias hipchat='open -a "HipChat"'
 alias chrome='open -a "Google Chrome"'
+
+# Transfer.sh CLI Sharing
+# transfer() { curl -T "$1" chunk.io | pbcopy; }
+transfer() { curl --upload-file "$1" https://transfer.sh/"$(basename ${1// /_})"; }
+alias transfer=transfer
+
+# wsend is the opposite of wget
+# wget https://raw.githubusercontent.com/abemassry/wsend/master/install.sh -O - | bash
+alias wsend="~/.wsend/wsend"
 
 # ================
 # Sublime
@@ -256,6 +268,8 @@ export EDITOR="subl -w"
 alias undopush="git push -f origin HEAD^:master"
 # undo a commit
 alias undocommit="git reset --soft HEAD^"
+# git status
+alias gs="git status"
 # -----------------
 # For the prompt
 # -----------------
@@ -325,23 +339,10 @@ eval "$(rbenv init -)"
 # =================
 # Shortcuts
 # =================
-# Students can add a shortcut to quickly access their GA folder
-# example: alias wdi="cd ~/Documents/GA/WDI4"
+# Add a shortcut to quickly access your dev folder
+# example: alias dev="cd ~/dev"
 # TODO: Set these
-export class_repo=""
-alias wdi="cd ~/dev/wdi/"
-
-cdhwfunc() {
-  # takes three args: the week, the day
-  # and an optional third for the user
-  if [ $1 -lt 10 ]
-  then
-    cd ~/dev/wdi/$class_repo/w0$1/d0$2/${3:-Instructor}
-  else
-    cd ~/dev/wdi/$class_repo/w$1/d0$2/${3:-Instructor}
-  fi
-}
-alias cdhw=cdhwfunc
+alias dev="cd ~/dev"
 
 # =================
 # Source Files
