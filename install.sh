@@ -87,10 +87,10 @@ function pause_awhile () {
 MINIMUM_OS="10.7.0"
 BELOVED_RUBY_VERSION="2.1.0"
 
-SRC_DIR=~/.wdi-installfest
+SRC_DIR=~/.installfest
 SCRIPTS=$SRC_DIR/scripts
 SETTINGS=$SRC_DIR/settings
-INSTALL_REPO=https://github.com/phlco/installfest_scripts.git
+INSTALL_REPO=https://github.com/jasonleibowitz/installfest_scripts.git
 SUBL_VERS=2
 # Determine OS version ################################################################
 
