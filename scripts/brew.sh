@@ -46,7 +46,7 @@ brew install ruby-build #........ provides an `rbenv install` command
 # brew install automake #.......... Automake is a tool for automatically generating Makefile.in
 # brew install git-flow #.......... Git extensions to provide high-level repository operations
 # brew install libtool #........... generic library support script
-brew install libyaml #........... a YAML 1.1 parser and emitter
+brew install libyaml #............. a YAML 1.1 parser and emitter
 # brew install neon #.............. neon is an HTTP and WebDAV client library
 # brew install openssl #........... A toolkit implementing SSL v2/v3 and TLS protocols with full-strength cryptography world-wide.
 # brew install pkg-config #........ pkg-config is a helper tool used when compiling applications and libraries.
@@ -54,9 +54,25 @@ brew install libyaml #........... a YAML 1.1 parser and emitter
 # brew install serf #.............. a high performance C-based HTTP client library
 # brew install sqlite #............ a self-contained, serverless, zero-configuration, transactional SQL database engine.
 # brew install ssh-copy-id #....... a script that uses ssh to log into a remote machine
-brew install libxml2 #........... XML C parser and toolkit
-brew install libxslt #........... a language for transforming XML documents into other XML documents.
-brew install libiconv #.......... a conversion library between Unicode and traditional encoding
+brew install libxml2 #............. XML C parser and toolkit
+brew install libxslt #............. a language for transforming XML documents into other XML documents.
+brew install libiconv #............ a conversion library between Unicode and traditional encoding
+
+# Additional Binaries via http://lapwinglabs.com/blog/hacker-guide-to-setting-up-your-mac
+brew install graphicsmagick #....... The swiss army knife of image processing.  
+brew install webkit2png #........... Command line tool to create screenshots of webpages. To use just call ‘webkit2png <url>’ in the command line
+brew install rename #............... Renames files according to modification rules specified on command line.
+brew install zopfli #............... Compression Algorithm (gzip, deflate). Takes more time, but compresses around 5% better than zlib. 
+brew install ffmpeg #............... Complete, cross-platform solution to record, convert and stream audio and video. 
+brew install python #............... Python programming language 
+brew install sshfs #................ Extend OS X’s native file handling capabilities. Successor to MacFuse.
+brew install trash #................ Small command line utility to move files to the trash. http://hasseg.org/trash/
+brew install tree #................. Tree is a recursive directory listing command that produces a depth indented listing of files, which is colorized ala dircolors
+brew install ack #.................. ack 2.12 is a tool like grep, optimized for programmers Designed for programmers with large heterogeneous trees of source code 
+
+
+
+
 
 #  Tap a new formula repository from GitHub, or list existing taps.
 brew tap homebrew/versions
