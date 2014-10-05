@@ -1,5 +1,13 @@
 ## WDI InstallFest Script
 
+##### Note
+
+This is a fork of [phlco](https://github.com/phlco)'s version of the GA installfest scripts. I modified it so that this script is optimized for post-WDI dev machines. 
+
+All notes below are Phil's notes and will be updated for my fork.
+
+---
+
 A work in progress to automate the set up of a student's development machine.
 
 ##### For Mac OS:
