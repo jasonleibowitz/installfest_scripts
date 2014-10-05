@@ -12,6 +12,23 @@
 # Sublime Text 2........The Text Editor
 # Sublime Text..........The Text Editor's Heir Apparent
 # XQuartz...............The X Window Server
+# Alfred................The best productivity app
+# 1Password.............Don't forget your passwords
+# AppZapper.............The uninstaller Apple forgot
+# Bartender.............Organize your menu bar apps
+# Chromecast............Stream to your TV
+# Dash..................Offline documentation
+# Evernote..............The best note taking app
+# FileZilla.............The best FTP Client
+# Flip4Mac..............Watch wmv videos in QuickTime
+# ImageOptim............Better images for web
+# iTerm2................Better terminal
+# iStat Menus...........Advanced Mac system monitor
+# Keka..................The free Mac OS X file archiver
+# MacDown...............The updated Markdown Editor
+# Skype.................Video chat
+# TunnelBear............IP Spoofing
+# uTorrent..............Torrent Downloader
 
 # A CATALOGUE
 # of the several functions contained herein
@@ -90,6 +107,7 @@ lend_me_your "HipChat"        "http://downloads.hipchat.com.s3.amazonaws.com/osx
 lend_me_your "Mou"            "http://mouapp.com/download/Mou.zip"
 lend_me_your "Spectacle"      "https://s3.amazonaws.com/spectacle/downloads/Spectacle+0.8.4.zip"
 lend_me_your "XQuartz"        "http://xquartz.macosforge.org/downloads/SL/XQuartz-2.7.5.dmg"
+
 if [ "$SUBL_VERS" == "2" ]; then
   lend_me_your "Sublime Text 2" "http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%202.0.2.dmg"
 else
@@ -114,6 +132,72 @@ defaults write com.hipchat.hipchat notificationVolume -float 20
 #   "Sublime Text" "Mou" "HipChat" "Google Chrome" "Spectacle"; do
 #   killall "${app}" > /dev/null 2>&1
 # done
+
+######################## INSTALL WITH BREW CASK #################################
+brew install caskroom/cask/brew-cask
+# Apps
+apps=(
+  alfred
+  dropbox
+  google-chrome
+  qlcolorcode
+  screenflick
+  slack
+  appcleaner
+  hazel
+  qlmarkdown
+  spotify
+  vagrant
+  flash
+  iterm2
+  qlprettypatch
+  virtualbox
+  flux
+  qlstephen
+  sketch
+  vlc
+  cloudup
+  nvalt
+  quicklook-json
+  skype
+  onepassword
+  bartender
+  chromecast
+  dash
+  evernote
+  filezilla
+  transmit
+  flip4mac
+  imageoptim
+  istat-menus
+  keka
+  macdown
+  skype
+  tunnelbear
+  utorrent
+)
+
+# Install apps to /Applications
+# Default is: /Users/$user/Applications
+echo "installing apps..."
+brew cask install --appdir="/Applications" ${apps[@]}
+
+###################### LINK ALFRED TO APPS ############################
+brew cask alfred link
+
+
+############### INSTALL FONTS WITH BREW CASK ##########################
+# fonts
+fonts=(
+  font-m-plus
+  font-clear-sans
+  font-roboto
+)
+
+# install fonts
+echo "installing fonts..."
+brew cask install ${fonts[@]}
+
 
 ## - FIN - ##
 
