@@ -12,6 +12,21 @@
     "JSHint",
     "SideBarEnhancements",
     "EditorConfig",
-    "CopyToHipChat"
+    "CopyToHipChat",
+    "Alignment",
+    "auto-save",
+    "BracketHighlighter",
+    "Capybara Snippets",
+    "Emmet",
+    "ERB Snippets",
+    "Git",
+    "Haml",
+    "jQuery",
+    "Pretty JSON",
+    "PyV8",
+    "RSpec",
+    "SCSS",
+    "Terminal",
+    "Trailing Spaces"
   ]
 }
