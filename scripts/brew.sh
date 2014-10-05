@@ -5,7 +5,7 @@ function install_or_update_brew () {
   if [[ $? != 0 ]]; then
       echo ''
       echo 'Installing Homebrew...'
-      ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
+      ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   else
       echo ''
       echo 'Brew is already installed. Running Homebrew Updates...'
