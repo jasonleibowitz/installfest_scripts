@@ -102,16 +102,16 @@ echo "Friends, Romans, Countrymen..."
 ################################################################################
 
 lend_me_your "Google Chrome"  "https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg"
-lend_me_your "Firefox"        "https://download-installer.cdn.mozilla.net/pub/firefox/releases/27.0.1/mac/en-US/Firefox%2027.0.1.dmg"
-lend_me_your "HipChat"        "http://downloads.hipchat.com.s3.amazonaws.com/osx/HipChat-2.4.zip"
+lend_me_your "Firefox"        "https://download.mozilla.org/?product=firefox-32.0.3-SSL&os=osx&lang=en-US"
+lend_me_your "HipChat"        "https://www.hipchat.com/downloads/latest/mac"
 lend_me_your "Mou"            "http://mouapp.com/download/Mou.zip"
-lend_me_your "Spectacle"      "https://s3.amazonaws.com/spectacle/downloads/Spectacle+0.8.4.zip"
-lend_me_your "XQuartz"        "http://xquartz.macosforge.org/downloads/SL/XQuartz-2.7.5.dmg"
+lend_me_your "Spectacle"      "https://s3.amazonaws.com/spectacle/downloads/Spectacle+0.8.5.zip"
+lend_me_your "XQuartz"        "http://xquartz.macosforge.org/downloads/SL/XQuartz-2.7.7.dmg"
 
 if [ "$SUBL_VERS" == "2" ]; then
   lend_me_your "Sublime Text 2" "http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%202.0.2.dmg"
 else
-  lend_me_your "Sublime Text"   "http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%20Build%203059.dmg"
+  lend_me_your "Sublime Text"   "http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%20Build%203065.dmg"
 fi
 ############################ DEFAULTS ##########################################
 # We bid be quiet when we hear it cry;
@@ -134,6 +134,8 @@ defaults write com.hipchat.hipchat notificationVolume -float 20
 # done
 
 ######################## INSTALL WITH BREW CASK #################################
+echo "Installing additional apps via Brew Cask"
+
 brew install caskroom/cask/brew-cask
 # Apps
 apps=(
@@ -183,10 +185,13 @@ echo "installing apps..."
 brew cask install --appdir="/Applications" ${apps[@]}
 
 ###################### LINK ALFRED TO APPS ############################
+echo "Giving alfred directions to the apps."
+
 brew cask alfred link
 
-
 ############### INSTALL FONTS WITH BREW CASK ##########################
+echo "Installing fonts via Brew Cask"
+
 # fonts
 fonts=(
   font-m-plus
