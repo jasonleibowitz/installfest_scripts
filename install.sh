@@ -327,8 +327,19 @@ pause_awhile "Configuring Postgres"
 source $SCRIPTS/postgres.sh
 #######################################################################################
 
-# Reload ##############################################################################
+# Update System Prefs (for hackers) ###################################################
 figlet_announces "act 4 - scene 2"
+
+quoth_the_bard \
+"Lord, we know what we are, but know not what we may be." \
+"--Hamlet (IV.v)"
+
+pause_awhile "Setting System Settings"
+source $SCRIPTS/osx_for_hackers.sh
+#######################################################################################
+
+# Reload ##############################################################################
+figlet_announces "act 4 - scene 3"
 
 quoth_the_bard \
 "Double, double toil and trouble; Fire burn, and caldron bubble." \
