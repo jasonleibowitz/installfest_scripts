@@ -5,8 +5,8 @@
 welcome_prompt=false
 
 function welcome_msg() {
-  # GA General Assembly Webdevelopment Immersive
-  echo ${BG_RED}${WHITE}GA${RESET}${WHITE}${BG_BLACK} General Assembly ${RESET}${BG_YELLOW}${BLACK} Web Development Immersive ${RESET}
+  # Installfest Script App Verions
+  echo ${BG_RED}${WHITE}Installfest Script${RESET}${WHITE}${BG_BLACK} Success: ${RESET}${BG_YELLOW}${BLACK} App Versions ${RESET}
   echo "------------------------------------------"
   echo $(git --version)
   echo $(brew -v)
