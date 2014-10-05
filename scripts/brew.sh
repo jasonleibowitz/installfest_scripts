@@ -70,10 +70,6 @@ brew install trash #................ Small command line utility to move files to
 brew install tree #................. Tree is a recursive directory listing command that produces a depth indented listing of files, which is colorized ala dircolors
 brew install ack #.................. ack 2.12 is a tool like grep, optimized for programmers Designed for programmers with large heterogeneous trees of source code 
 
-
-
-
-
 #  Tap a new formula repository from GitHub, or list existing taps.
 brew tap homebrew/versions
 # Ensures all tapped formula are symlinked into Library/Formula
