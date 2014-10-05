@@ -5,7 +5,8 @@ touch ~/.bash_profile
 cp ~/.bash_profile{,.bak}
 
 # Create our WDI working folder
-mkdir -p ~/dev/wdi
+# mkdir -p ~/dev/wdi
+mkdir -p ~/dev
 
 # Good captain, will you give me a copy of the sonnet
 # you writ to Diana in behalf of the Count Rousillon?
