@@ -121,22 +121,22 @@ case $osx_version in
 esac
 
 # Check for Command Line Tools based on OS versions
-if [ ! -z $(pkgutil --pkgs=com.apple.pkg.$cmdline_version) ]; then
-  echo "Command Line Tools are installed";
-elif [[ $osx_version < "10.10" ]]; then
-  echo "Command Line Tools are not installed"
-  echo "Register for a Developer Account"
-  echo "Download the Command Lion Tools from"
-  echo "https://developer.apple.com/downloads/index.action"
-  echo "Then rerun this script"
-  exit 1
-else
-  echo "Command Line Tools are not installed"
-  echo "run '$ sudo xcodebuild -license' then"
-  echo "'$ xcode-select --install'"
-  echo "Then rerun this script."
-  exit 1
-fi
+#if [ ! -z $(pkgutil --pkgs=com.apple.pkg.$cmdline_version) ]; then
+#  echo "Command Line Tools are installed";
+#elif [[ $osx_version < "10.10" ]]; then
+#  echo "Command Line Tools are not installed"
+#  echo "Register for a Developer Account"
+#  echo "Download the Command Lion Tools from"
+#  echo "https://developer.apple.com/downloads/index.action"
+#  echo "Then rerun this script"
+#  exit 1
+#else
+#  echo "Command Line Tools are not installed"
+#  echo "run '$ sudo xcodebuild -license' then"
+#  echo "'$ xcode-select --install'"
+#  echo "Then rerun this script."
+#  exit 1
+#fi
 
 
 #######################################################################################
