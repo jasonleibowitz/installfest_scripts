@@ -141,7 +141,6 @@ brew install caskroom/cask/brew-cask
 apps=(
   alfred
   dropbox
-  google-chrome
   qlcolorcode
   screenflick
   slack
