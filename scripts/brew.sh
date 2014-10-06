@@ -35,7 +35,7 @@ brew install node #.............. Event-driven I/O server-side JavaScript enviro
 brew install phantomjs #......... PhantomJS is a headless WebKit scriptable with a JavaScript API.
 brew install postgres #.......... open source object-relational database management system
 brew install qt #................ WebKit implementation of Qt
-brew install qt4 #............... qt for mavericks
+brew install qt5 #............... qt for mavericks/yosemite
 # For Ruby
 brew install rbenv #............. our ruby version manager
 brew install ruby-build #........ provides an `rbenv install` command
