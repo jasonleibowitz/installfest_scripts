@@ -113,6 +113,7 @@ SUBL_VERS=2
 
 # Check that command line tools are installed
 case $osx_version in
+  *10.10*) cmdline_version=“CLTools_Executables” ;; # Yosemite
   *10.9*) cmdline_version="CLTools_Executables" ;; # Mavericks
   *10.8*) cmdline_version="DeveloperToolsCLI"   ;; # Mountain Lion
   *10.7*) cmdline_version="DeveloperToolsCLI"   ;; # Lion
@@ -122,7 +123,7 @@ esac
 # Check for Command Line Tools based on OS versions
 if [ ! -z $(pkgutil --pkgs=com.apple.pkg.$cmdline_version) ]; then
   echo "Command Line Tools are installed";
-elif [[ $osx_version < "10.9" ]]; then
+elif [[ $osx_version < "10.10" ]]; then
   echo "Command Line Tools are not installed"
   echo "Register for a Developer Account"
   echo "Download the Command Lion Tools from"
