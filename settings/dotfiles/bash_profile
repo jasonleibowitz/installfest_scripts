@@ -237,7 +237,7 @@ alias rogue='lsof -i TCP:3000'
 # alias subl='open -a "Sublime Text 2"'
 
 alias mou='open -a "Mou"'
-aliad md='open -a "Macdown"'
+alias md='open -a "Macdown"'
 alias hipchat='open -a "HipChat"'
 alias chrome='open -a "Google Chrome"'
 
