@@ -93,13 +93,13 @@ SETTINGS=$SRC_DIR/settings
 INSTALL_REPO=https://github.com/jasonleibowitz/installfest_scripts.git
 SUBL_VERS=2
 # Determine OS version ################################################################
-
-osx_version=$(sw_vers -productVersion)
+# Doesn't work on 10.10 for some reason
+# osx_version=$(sw_vers -productVersion)
 # Force the user to upgrade if they're below 10.7
-echo "You're running OSX $osx_version"
-if [[ "$osx_version" < "$MINIMUM_OS" ]]; then
-  fie "Please upgrade to the latest OS then rerun this script."
-fi
+# echo "You're running OSX $osx_version"
+# if [[ "$osx_version" < "$MINIMUM_OS" ]]; then
+#   fie "Please upgrade to the latest OS then rerun this script."
+# fi
 
 # The one prereq is Xcode Command Line Tools ##########################################
 # Either download from the App store or install via xcode-select --install
