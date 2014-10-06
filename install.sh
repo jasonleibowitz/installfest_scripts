@@ -94,7 +94,7 @@ INSTALL_REPO=https://github.com/jasonleibowitz/installfest_scripts.git
 SUBL_VERS=2
 # Determine OS version ################################################################
 # Doesn't work on 10.10 for some reason
-# osx_version=$(sw_vers -productVersion)
+osx_version=$(sw_vers -productVersion)
 # Force the user to upgrade if they're below 10.7
 # echo "You're running OSX $osx_version"
 # if [[ "$osx_version" < "$MINIMUM_OS" ]]; then
